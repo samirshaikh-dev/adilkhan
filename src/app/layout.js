@@ -87,6 +87,12 @@ export const metadata = {
     capable: true,
     statusBarStyle: "black-translucent",
   },
+  icons: {
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
+    ],
+  },
   other: {
     "geo.region": `IN-${LOCATION.regionCode}`,
     "geo.placename": `${LOCATION.city}, ${LOCATION.region}`,
