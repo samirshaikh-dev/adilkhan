@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { site } from "../../data/site";
+import { MAP_URL } from "../../data/seo";
 import SectionIntro from "../ui/SectionIntro";
 import { sectionReveal } from "./motion";
 import {
@@ -9,6 +10,7 @@ import {
   LinkedinIcon,
   InstagramIcon,
   ArrowUpRightIcon,
+  MapPinIcon,
   SendIcon,
 } from "../icons";
 
@@ -38,6 +40,32 @@ export default function ContactSection() {
               <span className="w-1.5 h-1.5 rounded-full bg-[#10b981] animate-pulse" aria-hidden="true" />
               <span>Open to strategic & management discussions</span>
             </div>
+
+            <address className="mt-6 not-italic rounded-xl border border-[#dce3ea] bg-white p-4 max-w-sm">
+              <p className="text-[11px] uppercase tracking-[0.12em] font-semibold text-[#3b6794]">
+                Based in
+              </p>
+              <p className="mt-1.5 flex items-center gap-2 text-sm font-medium text-[#263b53]">
+                <MapPinIcon
+                  size={16}
+                  className="text-[#c9a227]"
+                  aria-hidden="true"
+                />
+                <span>
+                  {site.location.city}, {site.location.region}{" "}
+                  {site.location.postalCode}, {site.location.country}
+                </span>
+              </p>
+              <a
+                href={MAP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-2 inline-flex items-center gap-1 text-xs font-semibold text-[#3b6794] hover:text-[#c9a227] hover:underline"
+              >
+                <span>View Vapi on Google Maps</span>
+                <ArrowUpRightIcon size={13} aria-hidden="true" />
+              </a>
+            </address>
           </div>
 
           <div className="flex flex-wrap gap-3">

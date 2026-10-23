@@ -3,8 +3,14 @@ export const site = {
   tagline: "MBA student and national-level grappling medallist.",
   heroText:
     "I am building a career grounded in leadership, discipline, and practical decision-making.",
+  location: {
+    city: "Vapi",
+    region: "Gujarat",
+    postalCode: "396191",
+    country: "India",
+  },
   about: [
-    "I am an MBA student with a background in business and a strong interest in leadership, strategy, and performance under pressure.",
+    "I am an MBA student based in Vapi, Gujarat, with a background in business and a strong interest in leadership, strategy, and performance under pressure.",
     "My experience in grappling has shaped how I approach work: disciplined routines, resilience, and the ability to stay focused when the stakes are high.",
     "I bring a grounded, practical mindset to every opportunity and value work that combines preparation, accountability, and steady progress.",
   ],

@@ -44,6 +44,7 @@ export default function AboutSection() {
           eyebrow="About"
           title="Professional profile"
           titleId="about-title"
+          description={`Based in ${site.location.city}, ${site.location.region} ${site.location.postalCode}, I combine business education with national-level grappling experience.`}
         />
 
         <div

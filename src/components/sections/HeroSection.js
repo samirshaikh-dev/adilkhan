@@ -10,7 +10,7 @@ import { site } from "../../data/site";
 import { hasMedia } from "../../lib/media";
 import ButtonLink from "../ui/ButtonLink";
 import DecorativePanel from "../ui/DecorativePanel";
-import { ArrowRightIcon, SendIcon, SparklesIcon } from "../icons";
+import { ArrowRightIcon, MapPinIcon, SendIcon, SparklesIcon } from "../icons";
 import { AmbientGlow, SectionGridOverlay } from "../graphics/BackgroundGraphics";
 
 export default function HeroSection() {
@@ -64,6 +64,15 @@ export default function HeroSection() {
           "-=0.4"
         )
         .from(
+          ".hero-location-elem",
+          {
+            opacity: 0,
+            y: 10,
+            duration: 0.5,
+          },
+          "-=0.3"
+        )
+        .from(
           ".hero-lede-elem",
           {
             opacity: 0,
@@ -113,10 +122,15 @@ export default function HeroSection() {
 
           <h1
             id="hero-title"
-            ref={titleRef}
             className="font-display text-[clamp(2.25rem,7vw,3.5rem)] font-semibold leading-[1.08] tracking-tight text-[#f7f5f2]"
           >
-            {site.name}
+            <span ref={titleRef} className="block">
+              {site.name}
+            </span>
+            <span className="sr-only">
+              , MBA student and national-level grappling medallist in Vapi,
+              Gujarat 396191
+            </span>
           </h1>
 
           <p
@@ -124,6 +138,18 @@ export default function HeroSection() {
             className="text-[clamp(1.15rem,3vw,1.45rem)] font-medium leading-snug text-[#f7f5f2] max-w-[28ch]"
           >
             {site.tagline}
+          </p>
+
+          <p className="hero-location-elem flex items-center gap-2 text-sm text-[#a8b4c4]">
+            <MapPinIcon
+              size={15}
+              className="text-[#c9a227]"
+              aria-hidden="true"
+            />
+            <span>
+              Based in {site.location.city}, {site.location.region}{" "}
+              {site.location.postalCode}
+            </span>
           </p>
 
           <p className="hero-lede-elem text-[1.05rem] leading-relaxed text-[#a8b4c4] max-w-[52ch]">

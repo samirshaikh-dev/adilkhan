@@ -27,7 +27,8 @@ export default function Footer() {
       />
       <div className="max-w-[1080px] mx-auto px-5 md:px-8 flex flex-wrap items-center justify-between gap-4 text-sm">
         <p className="text-[#a8b4c4]">
-          © {currentYear} Adil Khan <span aria-hidden="true">·</span> Design and Build by{" "}
+          © {currentYear} Adil Khan <span aria-hidden="true">·</span> Based in
+          Vapi, Gujarat <span aria-hidden="true">·</span> Design and build by{" "}
           <a
             href="https://samir-portfolio-dev.vercel.app/"
             target="_blank"
