@@ -11,7 +11,7 @@ const variantStyles = {
   "primary-navy":
     "bg-[#263b53] hover:bg-[#1e354a] text-[#f7f5f2] border-[#263b53]",
   outline:
-    "bg-transparent hover:bg-[#eef1f5] text-[#263b53] border-[#dce3ea]",
+    "bg-white hover:bg-[#263b53] text-[#263b53] hover:text-[#f7f5f2] border-[#263b53]/25 hover:border-[#263b53] shadow-xs",
 };
 
 export default function ButtonLink({

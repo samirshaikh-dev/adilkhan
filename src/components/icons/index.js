@@ -34,6 +34,7 @@ import {
   Scale as LucideScale,
   Mail as LucideMail,
   Send as LucideSend,
+  Phone as LucidePhone,
 } from "lucide-react";
 
 // Official React Icons (FontAwesome6, Game Icons, Material Design)
@@ -130,6 +131,7 @@ export const ScaleIcon = adaptLucide(LucideScale, "ScaleIcon");
 // ---------------------------------------------------------
 
 export const MailIcon = adaptLucide(LucideMail, "MailIcon");
+export const PhoneIcon = adaptLucide(LucidePhone, "PhoneIcon");
 export const SendIcon = adaptLucide(LucideSend, "SendIcon");
 export const LinkedinIcon = adaptReactIcon(FaLinkedinIn, "LinkedinIcon");
 export const InstagramIcon = adaptReactIcon(FaInstagram, "InstagramIcon");

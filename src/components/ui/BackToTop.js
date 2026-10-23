@@ -29,12 +29,12 @@ export default function BackToTop() {
         <motion.button
           type="button"
           onClick={scrollToTop}
-          className="fixed bottom-7 right-7 z-40 w-11 h-11 rounded-full bg-[#141d2e] border border-[#c9a227]/40 text-[#f7f5f2] flex items-center justify-center shadow-lg hover:border-[#c9a227] hover:shadow-[0_0_20px_rgba(201,162,39,0.35)] transition-colors cursor-pointer"
+          className="fixed bottom-5 right-5 sm:bottom-7 sm:right-7 z-30 w-11 h-11 rounded-full bg-[#141d2e]/90 backdrop-blur-sm border border-[#c9a227]/40 text-[#f7f5f2] flex items-center justify-center shadow-lg hover:border-[#c9a227] hover:shadow-[0_0_20px_rgba(201,162,39,0.35)] transition-all cursor-pointer"
           aria-label="Scroll back to top"
           initial={{ opacity: 0, scale: 0.8, y: 16 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.8, y: 16 }}
-          whileHover={{ scale: 1.1, y: -2 }}
+          whileHover={{ scale: 1.08, y: -2 }}
           whileTap={{ scale: 0.92 }}
           transition={{ duration: 0.2 }}
         >

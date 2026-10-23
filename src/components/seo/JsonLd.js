@@ -58,7 +58,9 @@ export default function JsonLd() {
     },
     knowsAbout: Array.from(
       new Set([
-        ...(site.interests ?? []),
+        ...(site.interests ?? []).map((i) =>
+          typeof i === "string" ? i : i.title
+        ),
         "Business strategy",
         "Leadership",
         "Grappling",
@@ -93,6 +95,10 @@ export default function JsonLd() {
 
   if (site.contact?.email && !/example\.com/i.test(site.contact.email)) {
     person.email = site.contact.email;
+  }
+
+  if (site.contact?.phone && !/example|00000|98765/i.test(site.contact.phone)) {
+    person.telephone = site.contact.phone;
   }
 
   const structuredData = {

@@ -13,8 +13,9 @@ ${site.name} is an MBA student and national-level grappling silver medallist bas
 - Location: ${LOCATION.fullLabel}
 - Role: MBA Student & Grappling Athlete
 - Primary achievement: ${site.achievements.result} - ${site.achievements.title}
-- Focus areas: ${site.interests.join(", ")}
+- Focus areas: ${(site.interests ?? []).map((i) => (typeof i === "string" ? i : i.title)).join(", ")}
 - Contact: ${site.contact.email}
+- Phone: ${site.contact.phone || "Available upon request"}
 - LinkedIn: ${site.contact.linkedin}
 - Instagram: ${site.contact.instagram}
 

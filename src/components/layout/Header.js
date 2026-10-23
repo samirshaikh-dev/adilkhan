@@ -33,6 +33,16 @@ export default function Header() {
 
   useEffect(() => {
     const updateState = () => {
+      // Bottom of page detection for Contact section
+      const atBottom =
+        window.innerHeight + window.scrollY >=
+        document.documentElement.scrollHeight - 80;
+
+      if (atBottom) {
+        setActiveSection("contact");
+        return;
+      }
+
       const scrollPosition = window.scrollY + 180;
       let currentSection = "about";
 
