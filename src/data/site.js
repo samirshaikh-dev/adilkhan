@@ -10,9 +10,9 @@ export const site = {
     country: "India",
   },
   about: [
-    "I am an MBA student based in Vapi, Gujarat, with a background in business and a strong interest in leadership, strategy, and performance under pressure.",
-    "My experience in grappling has shaped how I approach work: disciplined routines, resilience, and the ability to stay focused when the stakes are high.",
-    "I bring a grounded, practical mindset to every opportunity and value work that combines preparation, accountability, and steady progress.",
+    "I am an MBA student interested in leadership, strategic thinking, and practical business decision-making. My experience as a competitive grappling athlete has shaped how I approach challenges, preparation, and performance under pressure.",
+    "Discipline is built through preparation, tested under pressure, and proven through consistent action.",
+    "I value accountability, thoughtful execution, and continuous improvement. I aim to bring these principles into business environments where sound judgment and steady progress matter.",
   ],
   nav: [
     { label: "About", href: "#about" },
@@ -24,15 +24,17 @@ export const site = {
   education: [
     {
       degree: "BBA",
+      degreeFullName: "Bachelor of Business Administration",
       institution: "Sample Business College",
-      period: "2018 — 2022",
+      period: "2018–2022",
       details: "General Business Management",
     },
     {
       degree: "MBA",
+      degreeFullName: "Master of Business Administration",
       institution: "Sample Graduate School of Management",
-      period: "2024 — Present",
-      details: "Business strategy and leadership",
+      period: "2024–Present",
+      details: "Business Strategy and Leadership",
     },
   ],
   achievements: {

@@ -8,29 +8,31 @@ import SectionIntro from "../ui/SectionIntro";
 import { fadeUp, sectionReveal, staggerContainer } from "./motion";
 import { FlameIcon, CompassIcon, TrendingUpIcon } from "../icons";
 
-const PULL_QUOTE_INDEX = 1;
-
 const pillars = [
   {
     icon: FlameIcon,
     title: "Mat Discipline",
-    desc: "Rigorous daily training shaping resilience and unshakeable work ethic.",
+    desc: "Preparation, resilience, and consistent effort.",
   },
   {
     icon: CompassIcon,
-    title: "Strategic Mindset",
-    desc: "Calm situational awareness and tactical execution under pressure.",
+    title: "Strategic Thinking",
+    desc: "Situational awareness and considered decisions.",
   },
   {
     icon: TrendingUpIcon,
-    title: "Accountable Growth",
-    desc: "Grounded preparation and steady compounding progress toward goals.",
+    title: "Continuous Growth",
+    desc: "Accountability, learning, and measurable progress.",
   },
 ];
 
 export default function AboutSection() {
   const aboutMedia = site.media?.about;
   const hasAboutPhoto = hasMedia(aboutMedia);
+
+  const introText = site.about[0];
+  const philosophyText = site.about[1];
+  const closingText = site.about[2];
 
   return (
     <motion.section
@@ -42,9 +44,8 @@ export default function AboutSection() {
       <div className="max-w-[1080px] mx-auto px-5 md:px-8 grid gap-10">
         <SectionIntro
           eyebrow="About"
-          title="Professional profile"
+          title="Business perspective. Athlete's discipline."
           titleId="about-title"
-          description={`Based in ${site.location.city}, ${site.location.region} ${site.location.postalCode}, I combine business education with national-level grappling experience.`}
         />
 
         <div
@@ -52,40 +53,42 @@ export default function AboutSection() {
             hasAboutPhoto ? "grid-cols-1 md:grid-cols-[1fr_0.85fr]" : "grid-cols-1"
           }`}
         >
-          <div className="grid gap-5 max-w-[65ch]">
-            {site.about.map((paragraph, index) =>
-              index === PULL_QUOTE_INDEX ? (
-                <motion.div
-                  key={paragraph}
-                  className="relative my-2"
-                  variants={fadeUp}
-                  transition={{ duration: 0.35 }}
-                >
-                  <span
-                    className="absolute -top-6 -left-2 font-display text-6xl text-[#c9a227]/25 pointer-events-none select-none"
-                    aria-hidden="true"
-                  >
-                    “
-                  </span>
-                  <p className="pl-5 border-l-[3px] border-[#c9a227] text-[1.08rem] font-medium leading-relaxed text-[#263b53]">
-                    {paragraph}
-                  </p>
-                </motion.div>
-              ) : (
-                <motion.p
-                  key={paragraph}
-                  className="text-[1.05rem] leading-relaxed text-[#263b53]"
-                  variants={fadeUp}
-                  transition={{ duration: 0.35 }}
-                >
-                  {paragraph}
-                </motion.p>
-              )
-            )}
+          <div className="grid gap-6 max-w-[72ch]">
+            {/* Opening Narrative */}
+            <motion.p
+              className="text-[1.05rem] md:text-[1.1rem] leading-relaxed text-[#263b53]"
+              variants={fadeUp}
+              transition={{ duration: 0.35 }}
+            >
+              {introText}
+            </motion.p>
 
-            {/* Strategic Pillars with Animated Icons */}
+            {/* Personal Philosophy Callout */}
             <motion.div
-              className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-6"
+              className="relative pl-5 py-1.5 border-l-[3px] border-[#c9a227] my-1"
+              variants={fadeUp}
+              transition={{ duration: 0.35 }}
+            >
+              <blockquote className="font-display text-[1.125rem] md:text-[1.25rem] font-medium leading-snug text-[#263b53] italic">
+                “{philosophyText}”
+              </blockquote>
+              <p className="text-xs uppercase tracking-wider text-[#a8b4c4] font-medium mt-2">
+                A personal philosophy inspired by sport
+              </p>
+            </motion.div>
+
+            {/* Closing Narrative */}
+            <motion.p
+              className="text-[1.05rem] md:text-[1.1rem] leading-relaxed text-[#263b53]"
+              variants={fadeUp}
+              transition={{ duration: 0.35 }}
+            >
+              {closingText}
+            </motion.p>
+
+            {/* Strategic Pillars with Balanced Card Heights */}
+            <motion.div
+              className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-5 mt-4"
               variants={staggerContainer}
               initial="hidden"
               whileInView="visible"
@@ -96,25 +99,25 @@ export default function AboutSection() {
                 return (
                   <motion.div
                     key={pillar.title}
-                    className="flex sm:flex-col lg:flex-row gap-3.5 items-start p-4 rounded-xl bg-white border border-[#dce3ea] hover:border-[#c9a227]/50 hover:shadow-md transition-all duration-200 group cursor-default"
+                    className="flex flex-col justify-between p-5 rounded-xl bg-white border border-[#dce3ea] hover:border-[#c9a227]/40 hover:shadow-sm transition-all duration-200 group cursor-default h-full"
                     variants={fadeUp}
-                    whileHover={{ y: -3, scale: 1.02 }}
-                    transition={{ type: "spring", stiffness: 350, damping: 18 }}
+                    whileHover={{ y: -3 }}
+                    transition={{ type: "spring", stiffness: 350, damping: 20 }}
                   >
-                    <div
-                      className="w-10 h-10 rounded-lg bg-[#eef1f5] border border-[#dce3ea] flex items-center justify-center shrink-0 text-[#3b6794] group-hover:bg-[#c9a227]/15 group-hover:text-[#8a7018] group-hover:border-[#c9a227]/30 transition-colors"
-                      aria-hidden="true"
-                    >
-                      <IconComponent size={20} />
-                    </div>
                     <div>
-                      <h4 className="text-sm font-semibold text-[#263b53] mb-1">
+                      <div
+                        className="w-10 h-10 rounded-lg bg-[#eef1f5] border border-[#dce3ea] flex items-center justify-center shrink-0 text-[#3b6794] group-hover:bg-[#c9a227]/12 group-hover:text-[#8a7018] group-hover:border-[#c9a227]/30 transition-colors mb-3"
+                        aria-hidden="true"
+                      >
+                        <IconComponent size={20} />
+                      </div>
+                      <h4 className="text-base font-semibold text-[#263b53] mb-1.5">
                         {pillar.title}
                       </h4>
-                      <p className="text-xs text-[#4a6078] leading-relaxed">
-                        {pillar.desc}
-                      </p>
                     </div>
+                    <p className="text-sm text-[#4a6078] leading-relaxed">
+                      {pillar.desc}
+                    </p>
                   </motion.div>
                 );
               })}
@@ -128,7 +131,7 @@ export default function AboutSection() {
                 alt={aboutMedia.alt}
                 width={aboutMedia.width}
                 height={aboutMedia.height}
-                className="rounded-xl w-full object-cover"
+                className="rounded-xl w-full object-cover shadow-md"
                 loading="lazy"
                 decoding="async"
               />
