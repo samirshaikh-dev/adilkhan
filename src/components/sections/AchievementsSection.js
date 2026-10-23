@@ -37,14 +37,18 @@ function getMetaIcon(item) {
   return AwardIcon;
 }
 
+const REFERENCE_DATE = new Date(0);
+
 function formatMetaText(item) {
-  try {
-    const parsed = parse(item, "d MMMM yyyy", new Date());
-    if (isValid(parsed)) {
-      return format(parsed, "MMMM d, yyyy");
+  if (typeof item === "string" && /^\d{1,2}\s+[A-Za-z]+\s+\d{4}$/.test(item.trim())) {
+    try {
+      const parsed = parse(item.trim(), "d MMMM yyyy", REFERENCE_DATE);
+      if (isValid(parsed)) {
+        return format(parsed, "MMMM d, yyyy");
+      }
+    } catch {
+      return item;
     }
-  } catch {
-    // Keep original string if not a parseable date
   }
   return item;
 }
