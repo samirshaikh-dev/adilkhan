@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { MedalIcon, GraduationCapIcon } from "../icons";
+import { MedalIcon, GraduationCapIcon, MartialArtsIcon } from "../icons";
 
 export default function HeroGraphic() {
   return (
@@ -41,7 +41,8 @@ export default function HeroGraphic() {
             <span className="w-1.5 h-1.5 rounded-full bg-[#c9a227] animate-pulse" />
             ATHLETIC & EXECUTIVE
           </span>
-          <span className="text-[0.6875rem] font-mono tracking-wider text-[#a8b4c4]">
+          <span className="text-[0.6875rem] font-mono tracking-wider text-[#a8b4c4] inline-flex items-center gap-1.5">
+            <MartialArtsIcon size={14} className="text-[#c9a227]" />
             DIV: 71KG / GI
           </span>
         </div>

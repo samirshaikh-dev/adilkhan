@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { parse, format, isValid } from "date-fns";
 import { site } from "../../data/site";
 import { hasMedia } from "../../lib/media";
 import ButtonLink from "../ui/ButtonLink";
@@ -17,6 +18,7 @@ import {
   CalendarIcon,
   ExternalLinkIcon,
   AwardIcon,
+  LaurelIcon,
 } from "../icons";
 
 function getMetaIcon(item) {
@@ -33,6 +35,18 @@ function getMetaIcon(item) {
   )
     return CalendarIcon;
   return AwardIcon;
+}
+
+function formatMetaText(item) {
+  try {
+    const parsed = parse(item, "d MMMM yyyy", new Date());
+    if (isValid(parsed)) {
+      return format(parsed, "MMMM d, yyyy");
+    }
+  } catch {
+    // Keep original string if not a parseable date
+  }
+  return item;
 }
 
 export default function AchievementsSection() {
@@ -88,7 +102,8 @@ export default function AchievementsSection() {
                 <TrophyIcon size={24} />
               </div>
               <div>
-                <span className="block text-xs uppercase tracking-[0.1em] font-semibold text-[#3b6794] mb-1">
+                <span className="inline-flex items-center gap-1.5 text-xs uppercase tracking-[0.1em] font-semibold text-[#3b6794] mb-1">
+                  <LaurelIcon size={14} className="text-[#c9a227]" />
                   National Championship
                 </span>
                 <h3 className="font-display text-[clamp(1.35rem,3vw,1.75rem)] font-semibold text-[#263b53] leading-snug">
@@ -100,10 +115,12 @@ export default function AchievementsSection() {
             <MedalBadge label={site.achievements.result} />
           </div>
 
-          {/* Structured Meta Grid with Contextual Icons */}
+          {/* Structured Meta Grid with Contextual Icons & date-fns */}
           <ul className="grid grid-cols-1 md:grid-cols-2 gap-3.5 list-none p-0 m-0">
             {site.achievements.meta.map((item) => {
               const IconComponent = getMetaIcon(item);
+              const formatted = formatMetaText(item);
+
               return (
                 <li key={item} className="flex items-center gap-3 text-[#4a6078] text-[0.95rem]">
                   <span
@@ -112,7 +129,7 @@ export default function AchievementsSection() {
                   >
                     <IconComponent size={16} />
                   </span>
-                  <span>{item}</span>
+                  <span>{formatted}</span>
                 </li>
               );
             })}

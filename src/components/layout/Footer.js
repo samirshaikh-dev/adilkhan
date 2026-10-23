@@ -1,13 +1,18 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { format } from "date-fns";
 import { ArrowUpIcon } from "../icons";
 
 export default function Footer() {
-  const [currentYear, setCurrentYear] = useState(2026);
+  const [currentYear, setCurrentYear] = useState("2026");
 
   useEffect(() => {
-    setCurrentYear(new Date().getFullYear());
+    try {
+      setCurrentYear(format(new Date(), "yyyy"));
+    } catch {
+      setCurrentYear(String(new Date().getFullYear()));
+    }
   }, []);
 
   const scrollToTop = () => {
