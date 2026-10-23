@@ -47,4 +47,10 @@ export const site = {
     linkedin: "https://www.linkedin.com/in/adil-khan/",
     instagram: "https://www.instagram.com/adil.khan/",
   },
+  media: {
+    hero: null,
+    about: null,
+    achievementFeatured: null,
+    gallery: [],
+  },
 };

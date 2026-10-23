@@ -10,3 +10,10 @@ export const sectionReveal = {
   variants: fadeUp,
   transition: { duration: 0.45 },
 };
+
+export const staggerContainer = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.08 },
+  },
+};

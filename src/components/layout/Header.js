@@ -8,12 +8,28 @@ const sectionIds = ["about", "education", "achievements", "interests", "contact"
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("about");
-  const [scrolled, setScrolled] = useState(false);
+  const [overHero, setOverHero] = useState(true);
+
+  useEffect(() => {
+    const hero = document.getElementById("hero");
+    if (!hero) {
+      setOverHero(false);
+      return undefined;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setOverHero(entry.isIntersecting);
+      },
+      { rootMargin: "-72px 0px 0px 0px", threshold: 0 }
+    );
+
+    observer.observe(hero);
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     const updateState = () => {
-      setScrolled(window.scrollY > 12);
-
       const scrollPosition = window.scrollY + 180;
       let currentSection = "about";
 
@@ -44,13 +60,17 @@ export default function Header() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  const headerClass = overHero
+    ? "site-header site-header--hero"
+    : "site-header site-header--solid";
+
   return (
     <>
       <a href="#main-content" className="skip-link">
         Skip to content
       </a>
 
-      <header className={`site-header ${scrolled ? "site-header-scrolled" : ""}`}>
+      <header className={headerClass}>
         <div className="container nav-bar">
           <a href="#top" className="brand-link" aria-label="Go to top">
             {site.name}

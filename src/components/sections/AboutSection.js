@@ -1,50 +1,69 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { site } from "../../data/site";
+import { hasMedia } from "../../lib/media";
+import SectionIntro from "../ui/SectionIntro";
 import { fadeUp, sectionReveal } from "./motion";
 
+const PULL_QUOTE_INDEX = 1;
+
 export default function AboutSection() {
+  const aboutMedia = site.media?.about;
+  const hasAboutPhoto = hasMedia(aboutMedia);
+
   return (
     <motion.section
       id="about"
-      className="section"
+      className="section band-light"
       aria-labelledby="about-title"
       {...sectionReveal}
     >
       <div className="container section-inner">
-        <div className="section-heading compact">
-          <p className="eyebrow">About</p>
-          <h2 id="about-title">Professional profile</h2>
-        </div>
+        <SectionIntro
+          eyebrow="About"
+          title="Professional profile"
+          titleId="about-title"
+        />
 
-        <div className="two-column-layout">
-          <div className="copy-column">
-            {site.about.map((paragraph) => (
-              <motion.p
-                key={paragraph}
-                variants={fadeUp}
-                transition={{ duration: 0.35 }}
-              >
-                {paragraph}
-              </motion.p>
-            ))}
+        <div className={`about-layout ${hasAboutPhoto ? "has-media" : ""}`}>
+          <div className="about-content">
+            {site.about.map((paragraph, index) =>
+              index === PULL_QUOTE_INDEX ? (
+                <motion.p
+                  key={paragraph}
+                  className="pull-quote"
+                  variants={fadeUp}
+                  transition={{ duration: 0.35 }}
+                >
+                  {paragraph}
+                </motion.p>
+              ) : (
+                <motion.p
+                  key={paragraph}
+                  variants={fadeUp}
+                  transition={{ duration: 0.35 }}
+                >
+                  {paragraph}
+                </motion.p>
+              )
+            )}
           </div>
 
-          <motion.div
-            className="visual-column"
-            variants={fadeUp}
-            transition={{ duration: 0.4 }}
-          >
-            <motion.div
-              className="photo-card tall-card"
-              aria-label="Profile photo placeholder"
-              whileHover={{ y: -3 }}
-              transition={{ duration: 0.15 }}
-            >
-              <span>Profile Photo</span>
+          {hasAboutPhoto ? (
+            <motion.div variants={fadeUp} transition={{ duration: 0.4 }}>
+              <Image
+                src={aboutMedia.src}
+                alt={aboutMedia.alt}
+                width={aboutMedia.width}
+                height={aboutMedia.height}
+                className="about-photo"
+                loading="lazy"
+                decoding="async"
+              />
             </motion.div>
-          </motion.div>
+          ) : null}
         </div>
       </div>
     </motion.section>
