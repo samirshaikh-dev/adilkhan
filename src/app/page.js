@@ -6,10 +6,11 @@ import HeroSection from "../components/sections/HeroSection";
 import InterestsSection from "../components/sections/InterestsSection";
 import Footer from "../components/layout/Footer";
 import Header from "../components/layout/Header";
+import BackToTop from "../components/ui/BackToTop";
 
 export default function Home() {
   return (
-    <div className="page-shell" id="top">
+    <div className="min-h-screen bg-[#f7f5f2] text-[#263b53]" id="top">
       <Header />
       <main id="main-content">
         <HeroSection />
@@ -20,6 +21,7 @@ export default function Home() {
         <ContactSection />
       </main>
       <Footer />
+      <BackToTop />
     </div>
   );
 }
