@@ -11,18 +11,20 @@ ${site.name} is an MBA student and national-level grappling silver medallist bas
 ## Key facts
 - Name: ${site.name}
 - Location: ${LOCATION.fullLabel}
-- Role: MBA Student & Grappling Athlete
+- Role: MBA Student & National Grappling Silver Medallist
+- Target: General Management / MBA Placements
 - Primary achievement: ${site.achievements.result} - ${site.achievements.title}
-- Focus areas: ${(site.interests ?? []).map((i) => (typeof i === "string" ? i : i.title)).join(", ")}
+- Focus areas: Discipline, Composure Under Pressure, Resilience, Strategic Thinking
 - Contact: ${site.contact.email}
 - Phone: ${site.contact.phone || "Available upon request"}
 - LinkedIn: ${site.contact.linkedin}
 - Instagram: ${site.contact.instagram}
 
 ## Page sections
-- About: ${SITE_URL}/#about
+- Profile: ${SITE_URL}/#profile
+- Achievement: ${SITE_URL}/#achievements
 - Education: ${SITE_URL}/#education
-- Achievements: ${SITE_URL}/#achievements
+- Strengths: ${SITE_URL}/#strengths
 - Interests: ${SITE_URL}/#interests
 - Contact: ${SITE_URL}/#contact
 

@@ -58,12 +58,15 @@ export default function JsonLd() {
     },
     knowsAbout: Array.from(
       new Set([
+        "General Management",
+        "Business Strategy",
+        "Leadership",
+        "Grappling",
+        "Discipline",
+        "Resilience",
         ...(site.interests ?? []).map((i) =>
           typeof i === "string" ? i : i.title
         ),
-        "Business strategy",
-        "Leadership",
-        "Grappling",
       ])
     ),
   };
@@ -110,7 +113,7 @@ export default function JsonLd() {
         "@type": "WebSite",
         "@id": websiteId,
         url: SITE_URL,
-        name: `${site.name} | MBA Student & Grappling Medallist`,
+        name: `${site.name} | MBA Student & National Grappling Silver Medallist`,
         description: SEO.description,
         inLanguage: "en-IN",
         publisher: { "@id": personId },

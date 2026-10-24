@@ -24,12 +24,13 @@ Robots: ${SITE_URL}/robots.txt
 ## Profile
 - Full Name: ${site.name}
 - Location: ${LOCATION.fullLabel} (${LOCATION.latitude}, ${LOCATION.longitude})
-- Occupation: MBA Student & National-Level Grappling Medallist
+- Occupation: MBA Student & National Grappling Silver Medallist
+- Location Focus: Vapi, Gujarat, India (general management roles)
 - Email: ${site.contact.email}
 - Phone: ${site.contact.phone || "Available upon request"}
 - LinkedIn: ${site.contact.linkedin}
 - Instagram: ${site.contact.instagram}
-- Primary Keyword Focus: Adil Khan Vapi Gujarat 396191, MBA student Vapi Gujarat 396191, grappling medallist Vapi Gujarat 396191
+- Primary Keyword Focus: Adil Khan Vapi Gujarat, MBA student Vapi Gujarat, national grappling silver medallist, general management candidate India
 
 ## Professional Summary
 ${about}
@@ -49,9 +50,10 @@ ${(site.interests ?? []).map((i) => (typeof i === "string" ? `- ${i}` : `- ${i.t
 
 ## On-Page Sections
 - Hero: ${SITE_URL}/#hero
-- About: ${SITE_URL}/#about
+- Profile: ${SITE_URL}/#profile
+- Achievement: ${SITE_URL}/#achievements
 - Education: ${SITE_URL}/#education
-- Achievements: ${SITE_URL}/#achievements
+- Strengths: ${SITE_URL}/#strengths
 - Interests: ${SITE_URL}/#interests
 - Contact: ${SITE_URL}/#contact
 

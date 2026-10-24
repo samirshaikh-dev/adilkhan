@@ -67,7 +67,7 @@ export const metadata = {
         url: `${SITE_URL}/images/adil-social-preview.jpg`,
         width: 1200,
         height: 630,
-        alt: "Adil Khan — MBA candidate and grappling athlete",
+        alt: "Adil Khan - MBA student and national grappling silver medallist",
         type: "image/jpeg",
       },
     ],
