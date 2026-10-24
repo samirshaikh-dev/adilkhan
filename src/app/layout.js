@@ -50,23 +50,33 @@ export const metadata = {
     telephone: false,
   },
   alternates: {
-    canonical: "/",
+    canonical: SITE_URL,
   },
   openGraph: {
+    type: "profile",
+    url: SITE_URL,
     title: SEO.ogTitle,
     description: SEO.ogDescription,
-    url: "/",
-    siteName: `${site.name} Portfolio`,
+    siteName: site.name,
     locale: SEO.locale,
-    type: "profile",
     firstName: "Adil",
     lastName: "Khan",
     username: "adilkhan",
+    images: [
+      {
+        url: `${SITE_URL}/images/adil-social-preview.jpg`,
+        width: 1200,
+        height: 630,
+        alt: "Adil Khan — MBA candidate and grappling athlete",
+        type: "image/jpeg",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: SEO.ogTitle,
     description: SEO.ogDescription,
+    images: [`${SITE_URL}/images/adil-social-preview.jpg`],
   },
   robots: {
     index: true,

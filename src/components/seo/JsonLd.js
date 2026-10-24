@@ -91,6 +91,8 @@ export default function JsonLd() {
 
   if (site.media?.hero?.src) {
     person.image = new URL(site.media.hero.src, SITE_URL).toString();
+  } else {
+    person.image = `${SITE_URL}/images/adil-social-preview.jpg`;
   }
 
   if (site.contact?.email && !/example\.com/i.test(site.contact.email)) {

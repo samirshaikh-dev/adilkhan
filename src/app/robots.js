@@ -19,7 +19,7 @@ export default function robots() {
           "DuckDuckBot",
           "Slurp",
           "YandexBot",
-          "Baido uspider",
+          "Baiduspider",
           "GPTBot",
           "ChatGPT-User",
           "OAI-SearchBot",

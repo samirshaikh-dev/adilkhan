@@ -17,13 +17,14 @@ export const MAP_URL =
   "https://www.google.com/maps/search/?api=1&query=Vapi%2C%20Gujarat%20396191";
 
 export const SEO = {
-  title: "Adil Khan | MBA Student & Grappling Medallist in Vapi, Gujarat",
-  shortTitle: "Adil Khan | MBA Student & Grappling Medallist",
+  title: "Adil Khan | MBA Student & Grappling Athlete",
+  shortTitle: "Adil Khan | MBA & Grappling",
   description:
-    "Adil Khan is an MBA student and national-level grappling silver medallist based in Vapi, Gujarat 396191. Explore his education, achievements, and contact details.",
-  ogTitle: "Adil Khan | MBA Student & Grappling Medallist in Vapi",
+    "Adil Khan is an MBA student and national-level grappling silver medallist based in Vapi, Gujarat 396191. Explore his education, achievements, and professional interests.",
+  ogTitle: "Adil Khan | MBA & Grappling Athlete",
   ogDescription:
-    "MBA student and national-level grappling silver medallist based in Vapi, Gujarat 396191.",
+    "MBA student and national-level grappling silver medallist from Vapi, Gujarat. Explore his achievements, education, and professional background.",
+  ogImage: `${SITE_URL}/images/adil-social-preview.jpg`,
   keywords: [
     "Adil Khan",
     "Adil Khan Vapi",
