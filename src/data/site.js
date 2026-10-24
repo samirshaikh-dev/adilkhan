@@ -1,8 +1,9 @@
 export const site = {
   name: "Adil Khan",
-  tagline: "MBA student and national-level grappling medallist.",
+  tagline: "MBA student and national grappling silver medallist.",
   heroText:
-    "I am building a career grounded in leadership, discipline, and practical decision-making.",
+    "Building a future in business. Forged through sport.",
+  resumePath: "/Adil-Khan-Resume.pdf",
   location: {
     city: "Vapi",
     region: "Gujarat",
@@ -10,14 +11,15 @@ export const site = {
     country: "India",
   },
   about: [
-    "I am an MBA student interested in leadership, strategic thinking, and practical business decision-making. My experience as a competitive grappling athlete has shaped how I approach challenges, preparation, and performance under pressure.",
+    "MBA student and national grappling silver medallist bringing a distinctive perspective shaped by academic learning and competitive sport.",
     "Discipline is built through preparation, tested under pressure, and proven through consistent action.",
-    "I value accountability, thoughtful execution, and continuous improvement. I aim to bring these principles into business environments where sound judgment and steady progress matter.",
+    "Focused on building a career in general management, bringing composure, resilience, and strategic thinking to complex challenges.",
   ],
   nav: [
-    { label: "About", href: "#about" },
+    { label: "Profile", href: "#profile" },
+    { label: "Achievement", href: "#achievements" },
     { label: "Education", href: "#education" },
-    { label: "Achievements", href: "#achievements" },
+    { label: "Strengths", href: "#strengths" },
     { label: "Interests", href: "#interests" },
     { label: "Contact", href: "#contact" },
   ],

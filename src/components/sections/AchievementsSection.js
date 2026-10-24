@@ -77,7 +77,7 @@ export default function AchievementsSection() {
   return (
     <motion.section
       id="achievements"
-      className="bg-[#f7f5f2] text-[#263b53] py-16 md:py-24 scroll-mt-[72px]"
+      className="bg-[#f7f5f2] text-[#263b53] py-16 md:py-20 scroll-mt-[72px]"
       aria-labelledby="achievements-title"
       {...sectionReveal}
     >

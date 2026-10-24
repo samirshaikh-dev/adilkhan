@@ -14,11 +14,11 @@ export default function EducationSection() {
   return (
     <motion.section
       id="education"
-      className="bg-[#eef1f5] text-[#263b53] py-16 md:py-24 scroll-mt-[72px]"
+      className="bg-[#eef1f5] text-[#263b53] py-16 md:py-20 scroll-mt-[72px]"
       aria-labelledby="education-title"
       {...sectionReveal}
     >
-      <div className="max-w-[1080px] mx-auto px-5 md:px-8 grid gap-10">
+      <div className="max-w-[1080px] mx-auto px-5 md:px-8 grid gap-8">
         <SectionIntro
           eyebrow="Education"
           title="Academic background"

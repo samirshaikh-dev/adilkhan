@@ -36,15 +36,15 @@ export default function AboutSection() {
 
   return (
     <motion.section
-      id="about"
-      className="bg-[#f7f5f2] text-[#263b53] py-16 md:py-24 scroll-mt-[72px]"
+      id="profile"
+      className="bg-[#f7f5f2] text-[#263b53] py-16 md:py-20 scroll-mt-[72px]"
       aria-labelledby="about-title"
       {...sectionReveal}
     >
-      <div className="max-w-[1080px] mx-auto px-5 md:px-8 grid gap-10">
+      <div className="max-w-[1080px] mx-auto px-5 md:px-8 grid gap-8">
         <SectionIntro
-          eyebrow="About"
-          title="Business perspective. Athlete's discipline."
+          eyebrow="Profile"
+          title="Athletics, academics, and ambition"
           titleId="about-title"
         />
 
@@ -86,9 +86,9 @@ export default function AboutSection() {
               {closingText}
             </motion.p>
 
-            {/* Strategic Pillars with Balanced Card Heights */}
+            {/* Strategic Pillars */}
             <motion.div
-              className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-5 mt-4"
+              className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-5 mt-2"
               variants={staggerContainer}
               initial="hidden"
               whileInView="visible"
@@ -99,22 +99,19 @@ export default function AboutSection() {
                 return (
                   <motion.div
                     key={pillar.title}
-                    className="flex flex-col justify-between p-5 rounded-xl bg-white border border-[#dce3ea] hover:border-[#c9a227]/40 hover:shadow-sm transition-all duration-200 group cursor-default h-full"
+                    className="flex flex-col p-5 rounded-lg bg-white border border-[#dce3ea] h-full"
                     variants={fadeUp}
-                    whileHover={{ y: -3 }}
-                    transition={{ type: "spring", stiffness: 350, damping: 20 }}
+                    transition={{ duration: 0.35 }}
                   >
-                    <div>
-                      <div
-                        className="w-10 h-10 rounded-lg bg-[#eef1f5] border border-[#dce3ea] flex items-center justify-center shrink-0 text-[#3b6794] group-hover:bg-[#c9a227]/12 group-hover:text-[#8a7018] group-hover:border-[#c9a227]/30 transition-colors mb-3"
-                        aria-hidden="true"
-                      >
-                        <IconComponent size={20} />
-                      </div>
-                      <h4 className="text-base font-semibold text-[#263b53] mb-1.5">
-                        {pillar.title}
-                      </h4>
+                    <div
+                      className="w-10 h-10 rounded-md bg-[#eef1f5] border border-[#dce3ea] flex items-center justify-center shrink-0 text-[#3b6794] mb-3"
+                      aria-hidden="true"
+                    >
+                      <IconComponent size={20} />
                     </div>
+                    <h4 className="text-base font-semibold text-[#263b53] mb-1.5">
+                      {pillar.title}
+                    </h4>
                     <p className="text-sm text-[#4a6078] leading-relaxed">
                       {pillar.desc}
                     </p>

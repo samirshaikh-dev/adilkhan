@@ -6,7 +6,7 @@ import { site } from "../../data/site";
 import ScrollProgress from "../ui/ScrollProgress";
 import { MenuIcon, CloseIcon } from "../icons";
 
-const sectionIds = ["about", "education", "achievements", "interests", "contact"];
+const sectionIds = ["profile", "achievements", "education", "strengths", "interests", "contact"];
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -43,8 +43,8 @@ export default function Header() {
         return;
       }
 
-      const scrollPosition = window.scrollY + 180;
-      let currentSection = "about";
+      const scrollPosition = window.scrollY + 200;
+      let currentSection = "profile";
 
       sectionIds.forEach((id) => {
         const section = document.getElementById(id);

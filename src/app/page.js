@@ -4,6 +4,7 @@ import ContactSection from "../components/sections/ContactSection";
 import EducationSection from "../components/sections/EducationSection";
 import HeroSection from "../components/sections/HeroSection";
 import InterestsSection from "../components/sections/InterestsSection";
+import StrengthsSection from "../components/sections/StrengthsSection";
 import Footer from "../components/layout/Footer";
 import Header from "../components/layout/Header";
 import BackToTop from "../components/ui/BackToTop";
@@ -15,8 +16,9 @@ export default function Home() {
       <main id="main-content">
         <HeroSection />
         <AboutSection />
-        <EducationSection />
         <AchievementsSection />
+        <EducationSection />
+        <StrengthsSection />
         <InterestsSection />
         <ContactSection />
       </main>

@@ -34,7 +34,7 @@ export default function InterestsSection() {
   return (
     <motion.section
       id="interests"
-      className="relative overflow-hidden bg-[#0b1220] text-[#f7f5f2] py-16 md:py-24 scroll-mt-[72px]"
+      className="relative overflow-hidden bg-[#0b1220] text-[#f7f5f2] py-16 md:py-20 scroll-mt-[72px]"
       aria-labelledby="interests-title"
       {...sectionReveal}
     >

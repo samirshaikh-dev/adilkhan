@@ -45,7 +45,7 @@ export default function ContactSection() {
   return (
     <motion.section
       id="contact"
-      className="bg-[#f7f5f2] text-[#263b53] py-16 md:py-24 scroll-mt-[72px]"
+      className="bg-[#f7f5f2] text-[#263b53] py-16 md:py-20 scroll-mt-[72px]"
       aria-labelledby="contact-title"
       {...sectionReveal}
     >
