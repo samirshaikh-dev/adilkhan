@@ -295,6 +295,18 @@ button {
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: -0.04em;
+  transform-origin: center;
+  transition: transform var(--transition-fast);
+}
+
+.wordmark:active .wordmark__mark {
+  transform: scale(0.96);
+}
+
+@media (hover: hover) {
+  .wordmark:hover .wordmark__mark {
+    transform: scale(1.05);
+  }
 }
 
 .wordmark__mark::after {
@@ -366,11 +378,16 @@ button {
   font-weight: 600;
   transition:
     border-color var(--transition-fast),
-    background-color var(--transition-fast);
+    background-color var(--transition-fast),
+    transform var(--transition-fast);
 }
 
 .menu-toggle:hover {
   border-color: var(--ink);
+}
+
+.menu-toggle:active {
+  transform: translateY(1px);
 }
 
 .menu-toggle__icon {
@@ -525,7 +542,8 @@ button {
   transition:
     background-color var(--transition-fast),
     border-color var(--transition-fast),
-    color var(--transition-fast);
+    color var(--transition-fast),
+    transform var(--transition-fast);
 }
 
 .btn__arrow {
@@ -560,6 +578,14 @@ button {
 
 .btn:hover .btn__arrow {
   transform: translateX(3px);
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn:active .btn__arrow {
+  transform: translateX(4px);
 }
 
 .hero__aside {
@@ -935,7 +961,9 @@ button {
   letter-spacing: -0.055em;
   line-height: 1.15;
   overflow-wrap: anywhere;
-  transition: color var(--transition-fast);
+  transition:
+    color var(--transition-fast),
+    transform var(--transition-fast);
 }
 
 .contact__phone:hover {
@@ -952,6 +980,14 @@ button {
 
 .contact__phone:hover .contact__phone-arrow {
   transform: translate(3px, -3px);
+}
+
+.contact__phone:active {
+  transform: translateY(1px);
+}
+
+.contact__phone:active .contact__phone-arrow {
+  transform: translate(4px, -4px);
 }
 
 .contact__meta {

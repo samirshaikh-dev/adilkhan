@@ -242,9 +242,12 @@ File: [src/components/layout/Footer.js](src/components/layout/Footer.js).
 - Smooth scrolling is enabled on `html`, with `scroll-padding-top` clearing the sticky header.
 - Link, button, status, and nav transitions are `160–220ms`.
 - Primary CTA arrow moves slightly on hover; contact arrow moves up-right.
+- Pressed states on the CTAs, phone CTA, and menu toggle use a `1px` downward transform; the wordmark mark scales subtly on fine-pointer hover and press.
+- Motion is limited to transform, color, background-color, and border-color transitions.
 - Mobile menu has a short `180ms` entrance animation.
 - Header scroll spy is the only ongoing scroll interaction; it uses `requestAnimationFrame` and passive listeners.
 - No animation library is used.
+- No scroll-triggered section reveals; content is visible immediately.
 - No scroll-jacking, parallax, autoplay carousels, counters, typing effects, or content hidden until animation.
 - `prefers-reduced-motion: reduce` disables smooth scrolling and reduces animations/transitions to near-zero duration.
 - Focus-visible uses a `2px` ink outline with `3px` offset on all interactive elements.
