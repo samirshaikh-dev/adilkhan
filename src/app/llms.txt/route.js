@@ -6,25 +6,21 @@ export function GET() {
 
 > ${SEO.description}
 
-${site.name} is an MBA student and national-level grappling silver medallist based in ${LOCATION.fullLabel}. This is his official single-page professional portfolio covering his academic background, verified competition result, interests, and contact details.
+${site.name} is an MBA candidate, BBA graduate, and national-level grappling silver medallist based in ${LOCATION.fullLabel}. This is his single-page professional portfolio.
 
 ## Key facts
 - Name: ${site.name}
 - Location: ${LOCATION.fullLabel}
-- Role: MBA Student & National Grappling Silver Medallist
-- Target: General Management / MBA Placements
-- Primary achievement: ${site.achievements.result} - ${site.achievements.title}
-- Focus areas: Discipline, Composure Under Pressure, Resilience, Strategic Thinking
-- Contact: ${site.contact.email}
-- Phone: ${site.contact.phone || "Available upon request"}
-- LinkedIn: ${site.contact.linkedin}
-- Instagram: ${site.contact.instagram}
+- Role: MBA candidate and national-level athlete
+- Education: BBA completed; MBA in progress
+- Achievement: ${site.achievements.result} at national-level grappling
+- Interests: ${(site.interests?.items ?? []).map((item) => item.title).join(", ")}
+- Phone: ${site.contact.phone}
 
 ## Page sections
-- Profile: ${SITE_URL}/#profile
-- Achievement: ${SITE_URL}/#achievements
+- Achievements: ${SITE_URL}/#achievements
 - Education: ${SITE_URL}/#education
-- Strengths: ${SITE_URL}/#strengths
+- Profile: ${SITE_URL}/#profile
 - Interests: ${SITE_URL}/#interests
 - Contact: ${SITE_URL}/#contact
 
@@ -34,7 +30,7 @@ ${site.name} is an MBA student and national-level grappling silver medallist bas
 - Robots: ${SITE_URL}/robots.txt
 
 ## Keywords
-${SEO.keywords.map((k) => `- ${k}`).join("\n")}
+${SEO.keywords.map((keyword) => `- ${keyword}`).join("\n")}
 `;
 
   return new Response(body, {

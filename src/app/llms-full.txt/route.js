@@ -3,17 +3,26 @@ import { LOCATION, SEO, SITE_URL } from "../../data/seo";
 
 export function GET() {
   const education = (site.education ?? [])
-    .map(
-      (e) =>
-        `- ${e.degree} - ${e.institution} (${e.period})${e.details ? ` | ${e.details}` : ""}`
-    )
+    .map((item) => `- ${item.degree} — ${item.degreeFullName} (${item.status})`)
     .join("\n");
 
-  const meta = (site.achievements?.meta ?? []).map((m) => `- ${m}`).join("\n");
+  const profile = [
+    site.profile?.lead,
+    site.profile?.body,
+    `"${site.profile?.quote}"`,
+  ]
+    .filter(Boolean)
+    .join("\n\n");
 
-  const about = (site.about ?? []).map((p) => `> ${p}`).join("\n\n");
+  const strengths = (site.profile?.strengths ?? [])
+    .map((item) => `- ${item.title}: ${item.body}`)
+    .join("\n");
 
-  const body = `# ${site.name} - llms-full.txt
+  const interests = (site.interests?.items ?? [])
+    .map((item) => `- ${item.title}: ${item.description}`)
+    .join("\n");
+
+  const body = `# ${site.name} — llms-full.txt
 
 > ${SEO.description}
 
@@ -23,37 +32,33 @@ Robots: ${SITE_URL}/robots.txt
 
 ## Profile
 - Full Name: ${site.name}
-- Location: ${LOCATION.fullLabel} (${LOCATION.latitude}, ${LOCATION.longitude})
-- Occupation: MBA Student & National Grappling Silver Medallist
-- Location Focus: Vapi, Gujarat, India (general management roles)
-- Email: ${site.contact.email}
-- Phone: ${site.contact.phone || "Available upon request"}
-- LinkedIn: ${site.contact.linkedin}
-- Instagram: ${site.contact.instagram}
-- Primary Keyword Focus: Adil Khan Vapi Gujarat, MBA student Vapi Gujarat, national grappling silver medallist, general management candidate India
+- Location: ${LOCATION.fullLabel}
+- Role: MBA candidate and national-level athlete
+- Education: BBA completed; MBA in progress
+- Sport: Grappling
+- Phone: ${site.contact.phone}
 
-## Professional Summary
-${about}
+## Profile Summary
+${profile}
 
 ## Education
 ${education}
 
-## Achievements (Verified)
-- Title: ${site.achievements?.title || "N/A"}
-- Result: ${site.achievements?.result || "N/A"}
-- Details:
-${meta}
-- Proof: ${site.achievements?.proof || "N/A"}
+## Achievement
+- Result: ${site.achievements.result}
+- Level: ${site.achievements.context}
 
-## Interests & Strengths
-${(site.interests ?? []).map((i) => (typeof i === "string" ? `- ${i}` : `- ${i.title}: ${i.description}`)).join("\n")}
+## Transferable Strengths
+${strengths}
+
+## Interests
+${interests}
 
 ## On-Page Sections
 - Hero: ${SITE_URL}/#hero
-- Profile: ${SITE_URL}/#profile
-- Achievement: ${SITE_URL}/#achievements
+- Achievements: ${SITE_URL}/#achievements
 - Education: ${SITE_URL}/#education
-- Strengths: ${SITE_URL}/#strengths
+- Profile: ${SITE_URL}/#profile
 - Interests: ${SITE_URL}/#interests
 - Contact: ${SITE_URL}/#contact
 
@@ -67,13 +72,11 @@ ${(site.interests ?? []).map((i) => (typeof i === "string" ? `- ${i}` : `- ${i.t
 
 ## Structured Data
 - Schema: JSON-LD Person + WebSite + ProfilePage on ${SITE_URL}/
-- Geo Tags: geo.region=IN-${LOCATION.regionCode}, geo.placename=${LOCATION.city}, ${LOCATION.region}, geo.position=${LOCATION.latitude};${LOCATION.longitude}, ICBM=${LOCATION.latitude}, ${LOCATION.longitude}
 
 ## Crawling & Indexing Guidance
 - Allow all user agents to crawl public assets.
 - Prioritize indexing of canonical page ${SITE_URL}/ with English (India) locale.
-- Strong local relevance for queries combining "Adil Khan", "Vapi", "Gujarat", "396191", "MBA", "grappling", "medallist", "national championship".
-- No private routes exist; sitemap points to canonical homepage.
+- No private routes exist; the sitemap points to the canonical homepage.
 `;
 
   return new Response(body, {

@@ -1,9 +1,9 @@
 import { ImageResponse } from "next/og";
 import { site } from "../data/site";
-import { LOCATION, SEO, SITE_URL } from "../data/seo";
+import { LOCATION, SITE_URL } from "../data/seo";
 
 export const alt =
-  "Adil Khan, MBA student and national-level grappling medallist based in Vapi, Gujarat 396191";
+  "Adil Khan, MBA candidate and national-level grappling medallist based in Vapi, Gujarat";
 export const size = {
   width: 1200,
   height: 630,
@@ -22,10 +22,10 @@ export default async function Image() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          background: "#0b1220",
-          color: "#f7f5f2",
+          background: "#F7F8F2",
+          color: "#0A0A0A",
           fontFamily: "sans-serif",
-          padding: "72px",
+          padding: "64px 72px 56px",
           position: "relative",
         }}
       >
@@ -35,8 +35,8 @@ export default async function Image() {
             top: 0,
             left: 0,
             right: 0,
-            height: "6px",
-            background: "#c9a227",
+            height: "10px",
+            background: "#B8FF00",
           }}
         />
 
@@ -52,21 +52,29 @@ export default async function Image() {
             style={{
               display: "flex",
               alignItems: "center",
-              padding: "10px 18px",
-              border: "1px solid rgba(201, 162, 39, 0.45)",
-              borderRadius: "999px",
-              color: "#c9a227",
+              gap: "12px",
+              color: "#5F6368",
               fontSize: "18px",
-              letterSpacing: "0.16em",
+              fontWeight: 600,
+              letterSpacing: "0.12em",
             }}
           >
-            MBA STUDENT / GRAPPLING MEDALLIST
+            <div
+              style={{
+                display: "flex",
+                width: "10px",
+                height: "10px",
+                borderRadius: "999px",
+                background: "#B8FF00",
+              }}
+            />
+            MBA CANDIDATE / NATIONAL-LEVEL ATHLETE
           </div>
           <div
             style={{
               display: "flex",
-              color: "#a8b4c4",
-              fontSize: "20px",
+              color: "#5F6368",
+              fontSize: "18px",
               letterSpacing: "0.08em",
             }}
           >
@@ -74,14 +82,14 @@ export default async function Image() {
           </div>
         </div>
 
-        <div style={{ display: "flex", flexDirection: "column", gap: "18px" }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
           <div
             style={{
               display: "flex",
-              fontSize: "104px",
+              fontSize: "112px",
               fontWeight: 700,
-              letterSpacing: "-0.04em",
-              lineHeight: 1,
+              letterSpacing: "-0.06em",
+              lineHeight: 0.95,
             }}
           >
             {site.name}
@@ -89,13 +97,15 @@ export default async function Image() {
           <div
             style={{
               display: "flex",
-              fontSize: "34px",
-              lineHeight: 1.35,
-              color: "#a8b4c4",
-              maxWidth: "860px",
+              fontSize: "40px",
+              fontWeight: 500,
+              letterSpacing: "-0.03em",
+              lineHeight: 1.25,
+              color: "#5F6368",
+              maxWidth: "900px",
             }}
           >
-            National-level grappling medallist and MBA student in Vapi, Gujarat.
+            Business in mind. Discipline in action.
           </div>
         </div>
 
@@ -105,14 +115,14 @@ export default async function Image() {
             alignItems: "center",
             justifyContent: "space-between",
             width: "100%",
-            borderTop: "1px solid rgba(247, 245, 242, 0.14)",
-            paddingTop: "26px",
-            color: "#a8b4c4",
-            fontSize: "22px",
+            borderTop: "1px solid #DFE2D8",
+            paddingTop: "24px",
+            color: "#5F6368",
+            fontSize: "20px",
           }}
         >
-          <div style={{ display: "flex", color: "#c9a227" }}>
-            {LOCATION.fullLabel}
+          <div style={{ display: "flex" }}>
+            BBA graduate · MBA in progress · Grappling
           </div>
           <div style={{ display: "flex" }}>{hostname}</div>
         </div>

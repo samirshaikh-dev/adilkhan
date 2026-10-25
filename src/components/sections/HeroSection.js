@@ -1,207 +1,57 @@
-"use client";
-
-import { useRef } from "react";
-import Image from "next/image";
-import { motion } from "framer-motion";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
-import SplitType from "split-type";
 import { site } from "../../data/site";
-import { hasMedia } from "../../lib/media";
-import ButtonLink from "../ui/ButtonLink";
-import DecorativePanel from "../ui/DecorativePanel";
-import {
-  SendIcon,
-  DownloadIcon,
-  MapPinIcon,
-  GraduationCapIcon,
-  MedalIcon,
-} from "../icons";
-import { AmbientGlow, SectionGridOverlay } from "../graphics/BackgroundGraphics";
+import ArrowIcon from "../ui/ArrowIcon";
 
 export default function HeroSection() {
-  const heroMedia = site.media?.hero;
-  const containerRef = useRef(null);
-  const headlineRef = useRef(null);
-  const nameRef = useRef(null);
-
-  useGSAP(
-    () => {
-      if (!headlineRef.current) return;
-
-      const headlineSplit = new SplitType(headlineRef.current, {
-        types: "words,chars",
-        tagName: "span",
-      });
-
-      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
-
-      tl.from(".hero-eyebrow-elem", {
-        opacity: 0,
-        y: -12,
-        duration: 0.5,
-        ease: "back.out(1.5)",
-      })
-        .from(
-          ".hero-name-elem",
-          {
-            opacity: 0,
-            y: 16,
-            duration: 0.45,
-          },
-          "-=0.2"
-        )
-        .from(
-          headlineSplit.words,
-          {
-            opacity: 0,
-            y: 24,
-            stagger: 0.03,
-            duration: 0.6,
-            ease: "power4.out",
-          },
-          "-=0.15"
-        )
-        .from(
-          ".hero-lede-elem",
-          {
-            opacity: 0,
-            y: 12,
-            duration: 0.45,
-          },
-          "-=0.15"
-        )
-        .from(
-          ".hero-pills-elem",
-          {
-            opacity: 0,
-            y: 10,
-            stagger: 0.06,
-            duration: 0.4,
-          },
-          "-=0.15"
-        )
-        .from(
-          ".hero-cta-btn",
-          {
-            opacity: 0,
-            y: 10,
-            stagger: 0.08,
-            duration: 0.4,
-            ease: "back.out(1.5)",
-          },
-          "-=0.15"
-        );
-
-      return () => {
-        headlineSplit.revert();
-      };
-    },
-    { scope: containerRef }
-  );
+  const { hero } = site;
 
   return (
-    <section
-      id="hero"
-      ref={containerRef}
-      className="relative overflow-hidden bg-[#0b1220] text-[#f7f5f2] pt-[calc(72px+32px)] pb-16 md:pb-20 min-h-[min(90vh,820px)] flex items-center scroll-mt-[72px]"
-      aria-labelledby="hero-title"
-    >
-      <AmbientGlow color="warm" />
-      <SectionGridOverlay />
+    <section className="hero" id="hero" aria-labelledby="hero-title">
+      <div className="container hero__inner">
+        <div className="hero__copy">
+          <p className="eyebrow">{hero.eyebrow}</p>
 
-      <div className="max-w-[1080px] mx-auto px-5 md:px-8 w-full grid grid-cols-1 md:grid-cols-[1.08fr_0.92fr] gap-10 md:gap-12 items-center relative z-10">
-        <div className="grid gap-5">
-          <div className="hero-eyebrow-elem inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-[#c9a227]/10 border border-[#c9a227]/30 w-fit">
-            <p className="text-xs uppercase tracking-[0.16em] font-semibold text-[#c9a227]">
-              PERSONAL PORTFOLIO
-            </p>
-          </div>
-
-          <div className="grid gap-2">
-            <p
-              ref={nameRef}
-              className="hero-name-elem text-sm md:text-base font-medium text-[#a8b4c4] tracking-wide uppercase"
-            >
-              MBA · ATHLETICS
-            </p>
-            <p className="hero-name-elem text-xs uppercase tracking-[0.18em] text-[#c9a227] font-semibold">
-              DISCIPLINE. PREPARATION. PERFORMANCE.
-            </p>
-            <h1
-              id="hero-title"
-              ref={headlineRef}
-              className="font-display text-[clamp(2.25rem,6vw,3.6rem)] font-semibold leading-[1.05] tracking-tight text-[#f7f5f2]"
-            >
-              Building a future in business. Forged through sport.
-            </h1>
-          </div>
-
-          <p className="hero-lede-elem text-[1.02rem] leading-relaxed text-[#a8b4c4] max-w-[56ch]">
-            MBA student and national grappling silver medallist, bringing a
-            distinctive perspective shaped by academic learning and competitive
-            sport.
-          </p>
-
-          <div className="hero-pills-elem flex flex-wrap items-center gap-2.5 pt-1">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md text-xs font-medium text-[#f7f5f2] bg-white/6 border border-white/10">
-              <MedalIcon size={14} className="text-[#c9a227]" />
-              NATIONAL
-            </span>
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md text-xs font-medium text-[#f7f5f2] bg-white/6 border border-white/10">
-              <GraduationCapIcon size={14} className="text-[#4778a8]" />
-              MBA
-            </span>
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md text-xs font-medium text-[#a8b4c4] bg-white/6 border border-white/10">
-              <MapPinIcon size={13} className="text-[#a8b4c4]" />
-              GRAPPLING
-            </span>
-          </div>
-
-          <div className="flex flex-wrap gap-3 pt-3">
-            <div className="hero-cta-btn">
-              <ButtonLink
-                href={site.resumePath || "/Adil-Khan-Resume.pdf"}
-                variant="primary-warm"
-                iconPosition="right"
-                download
+          <h1 className="hero__title" id="hero-title">
+            {hero.title.map((line, index) => (
+              <span
+                key={line}
+                className={`hero__title-line${
+                  index === 1 ? " hero__title-line--accent" : ""
+                }`}
               >
-                Download Resume
-              </ButtonLink>
-            </div>
-            <div className="hero-cta-btn">
-              <ButtonLink
-                href="#contact"
-                variant="ghost-light"
-                icon={SendIcon}
-                iconPosition="right"
-              >
-                Get in Touch
-              </ButtonLink>
-            </div>
+                {line}
+              </span>
+            ))}
+          </h1>
+
+          <p className="hero__intro">{hero.intro}</p>
+
+          <div className="hero__actions">
+            <a className="btn btn--primary" href={hero.primaryCta.href}>
+              {hero.primaryCta.label}
+              <ArrowIcon />
+            </a>
+            <a className="btn btn--secondary" href={hero.secondaryCta.href}>
+              {hero.secondaryCta.label}
+            </a>
           </div>
         </div>
 
-        <motion.div
-          className="flex justify-center w-full"
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-        >
-          {hasMedia(heroMedia) ? (
-            <Image
-              src={heroMedia.src}
-              alt={heroMedia.alt}
-              width={heroMedia.width}
-              height={heroMedia.height}
-              className="w-full max-w-[420px] aspect-[4/5] rounded-xl object-cover shadow-2xl"
-              priority
-              fetchPriority="high"
-            />
-          ) : (
-            <DecorativePanel />
-          )}
-        </motion.div>
+        <aside className="hero__aside" aria-label="At a glance">
+          <p className="hero__aside-label">At a glance</p>
+
+          <dl className="facts">
+            {hero.facts.map((fact) => (
+              <div className="fact" key={fact.label}>
+                <dt className="fact__label">{fact.label}</dt>
+                <dd className="fact__value">{fact.value}</dd>
+              </div>
+            ))}
+          </dl>
+
+          <p className="hero__aside-note">
+            Open to conversations about business, sport, and what comes next.
+          </p>
+        </aside>
       </div>
     </section>
   );

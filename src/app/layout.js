@@ -1,21 +1,20 @@
-import { DM_Sans, Fraunces } from "next/font/google";
+import { Inter, Manrope } from "next/font/google";
 import "./globals.css";
-import SmoothScroll from "../components/layout/SmoothScroll";
 import JsonLd from "../components/seo/JsonLd";
 import { site } from "../data/site";
 import { LOCATION, SEO, SITE_URL } from "../data/seo";
 
-const bodyFont = DM_Sans({
+const bodyFont = Inter({
   subsets: ["latin"],
   weight: ["400", "500", "600"],
-  variable: "--font-body",
+  variable: "--font-inter",
   display: "swap",
 });
 
-const displayFont = Fraunces({
+const displayFont = Manrope({
   subsets: ["latin"],
-  weight: ["600"],
-  variable: "--font-display",
+  weight: ["500", "600", "700"],
+  variable: "--font-manrope",
   display: "swap",
 });
 
@@ -61,22 +60,11 @@ export const metadata = {
     locale: SEO.locale,
     firstName: "Adil",
     lastName: "Khan",
-    username: "adilkhan",
-    images: [
-      {
-        url: `${SITE_URL}/images/adil-social-preview.jpg`,
-        width: 1200,
-        height: 630,
-        alt: "Adil Khan - MBA student and national grappling silver medallist",
-        type: "image/jpeg",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: SEO.ogTitle,
     description: SEO.ogDescription,
-    images: [`${SITE_URL}/images/adil-social-preview.jpg`],
   },
   robots: {
     index: true,
@@ -95,7 +83,7 @@ export const metadata = {
   appleWebApp: {
     title: site.name,
     capable: true,
-    statusBarStyle: "black-translucent",
+    statusBarStyle: "default",
   },
   icons: {
     icon: [
@@ -114,10 +102,7 @@ export const metadata = {
 export const viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#0B1220" },
-    { media: "(prefers-color-scheme: dark)", color: "#0B1220" },
-  ],
+  themeColor: "#F7F8F2",
   colorScheme: "light",
 };
 
@@ -129,7 +114,7 @@ export default function RootLayout({ children }) {
     >
       <body>
         <JsonLd />
-        <SmoothScroll>{children}</SmoothScroll>
+        {children}
       </body>
     </html>
   );

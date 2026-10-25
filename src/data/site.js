@@ -1,126 +1,110 @@
 export const site = {
   name: "Adil Khan",
-  tagline: "MBA student and national grappling silver medallist.",
-  heroText:
-    "Building a future in business. Forged through sport.",
-  resumePath: "/Adil-Khan-Resume.pdf",
+  role: "MBA candidate and national-level athlete",
   location: {
     city: "Vapi",
     region: "Gujarat",
-    postalCode: "396191",
     country: "India",
   },
-  about: [
-    "MBA student and national grappling silver medallist bringing a distinctive perspective shaped by academic learning and competitive sport.",
-    "Discipline is built through preparation, tested under pressure, and proven through consistent action.",
-    "Focused on building a career in general management, bringing composure, resilience, and strategic thinking to complex challenges.",
-  ],
   nav: [
-    { label: "Profile", href: "#profile" },
-    { label: "Achievement", href: "#achievements" },
+    { label: "Achievements", href: "#achievements" },
     { label: "Education", href: "#education" },
-    { label: "Strengths", href: "#strengths" },
-    { label: "Interests", href: "#interests" },
+    { label: "Profile", href: "#profile" },
     { label: "Contact", href: "#contact" },
   ],
+  hero: {
+    eyebrow: "MBA CANDIDATE · NATIONAL-LEVEL ATHLETE",
+    title: ["Business in mind.", "Discipline in action."],
+    intro:
+      "I'm Adil Khan. I have completed a BBA and am currently pursuing an MBA, while competing in grappling at national level. Sport has shaped how I prepare, focus, and handle pressure.",
+    primaryCta: { label: "Explore my journey", href: "#achievements" },
+    secondaryCta: { label: "Contact me", href: "#contact" },
+    facts: [
+      { label: "Now", value: "Pursuing an MBA" },
+      { label: "Background", value: "BBA graduate" },
+      { label: "Sport", value: "National-level grappling" },
+      { label: "Based in", value: "Vapi, Gujarat" },
+    ],
+  },
+  achievements: {
+    eyebrow: "Achievement spotlight",
+    title: "A national podium.",
+    result: "Silver medal",
+    context: "National-level grappling",
+    description:
+      "Competing at national level has been one of the most demanding and clarifying experiences of my life. The result is a silver medal; the lesson is the standard of preparation it took to get there.",
+    detail:
+      "The medal reflects years of practice, conditioning, and the willingness to keep refining the basics.",
+  },
   education: [
-    {
-      degree: "BBA",
-      degreeFullName: "Bachelor of Business Administration",
-      institution: "Sample Business College",
-      period: "2018–2022",
-      details: "General Business Management",
-    },
     {
       degree: "MBA",
       degreeFullName: "Master of Business Administration",
-      institution: "Sample Graduate School of Management",
-      period: "2024–Present",
-      details: "Business Strategy and Leadership",
+      status: "In progress",
+      note: "Currently pursuing",
+      current: true,
+    },
+    {
+      degree: "BBA",
+      degreeFullName: "Bachelor of Business Administration",
+      status: "Completed",
+      note: "Completed",
+      current: false,
     },
   ],
-  achievements: {
-    title: "6th National Grappling Championship 2026",
-    result: "Silver medal",
-    medalType: "silver",
-    category: "Men's 71 kg",
-    division: "GI Division",
-    organizer: "National Grappling Association",
-    location: "Mumbai, India",
-    date: "12 March 2026",
-    verified: true,
-    proof: "https://example.com/results/6th-national-grappling-championship-2026",
-    proofLabel: "View official result",
-    proofDocument: "Official Federation Results Sheet",
-    meta: [
-      "Men's 71 kg",
-      "GI division",
-      "Organised by National Grappling Association",
-      "Mumbai, India",
-      "12 March 2026",
-    ],
-    other: [
+  profile: {
+    eyebrow: "Profile",
+    title: "Built by preparation.",
+    lead:
+      "I am a BBA graduate pursuing an MBA, with a national-level grappling career alongside my studies.",
+    body:
+      "I am drawn to business problems that reward clear thinking and steady execution. Competition has been a practical education in both: you prepare deliberately, adapt under pressure, and learn to judge progress by what you can repeat.",
+    quote:
+      "The work you do when no one is watching is the work that shows up when it matters.",
+    strengths: [
       {
-        title: "State Grappling Championship",
-        result: "Gold medal",
-        medalType: "gold",
-        division: "Senior Men · 71 kg (GI)",
-        organizer: "Gujarat State Grappling Association",
-        location: "Surat, Gujarat",
-        period: "2025",
-        verified: true,
+        title: "Preparation over noise",
+        body:
+          "Competition rewards the unglamorous work: repetition, recovery, and a plan you can trust. I bring the same preference for preparation to academic and business work.",
       },
       {
-        title: "West Zone Combat Games Invitational",
-        result: "Bronze medal",
-        medalType: "bronze",
-        division: "Open Weight Division",
-        organizer: "Western India Combat Federation",
-        location: "Pune, Maharashtra",
-        period: "2024",
-        verified: false,
+        title: "Composure in the moment",
+        body:
+          "A match can change quickly. I have learned to slow my thinking, focus on the next decision, and keep my behaviour consistent when the pressure rises.",
+      },
+      {
+        title: "Progress through repetition",
+        body:
+          "Improvement rarely arrives in a straight line. I value honest feedback, disciplined practice, and the patience to build capability over time.",
       },
     ],
   },
-  interestsIntro: {
-    eyebrow: "Interests",
-    title: "Beyond the mat",
-    subtitle: "The pursuits that shape my perspective, discipline, and growth.",
+  interests: {
+    eyebrow: "Beyond the mat",
+    title: "Life outside competition",
+    intro:
+      "Cricket, strength training, and continuous learning keep me curious, grounded, and connected to the people around me.",
+    items: [
+      {
+        title: "Cricket",
+        description: "A team game that rewards awareness, patience, and reading the moment.",
+      },
+      {
+        title: "Strength training",
+        description: "Quiet, consistent work that builds a base for everything else.",
+      },
+      {
+        title: "Continuous learning",
+        description: "Following ideas in business, leadership, and performance.",
+      },
+    ],
   },
-  interests: [
-    {
-      title: "Grappling",
-      description: "Competition, preparation, and resilience.",
-      icon: "MartialArtsIcon",
-    },
-    {
-      title: "Cricket",
-      description: "Teamwork and competitive spirit.",
-      icon: "CricketIcon",
-    },
-    {
-      title: "Strength training",
-      description: "Consistency and physical development.",
-      icon: "DumbbellIcon",
-    },
-    {
-      title: "Continuous learning",
-      description: "Exploring ideas in business and leadership.",
-      icon: "BookOpenIcon",
-    },
-  ],
   contact: {
+    eyebrow: "Contact",
+    title: "Let's connect.",
     invitation:
-      "Open to meaningful conversations about business, leadership, and collaboration.",
-    email: "adil.khan@example.com",
+      "I'm open to thoughtful conversations about business, sport, and what comes next. The best way to reach me is by phone.",
     phone: "+91 91049 27782",
-    linkedin: "https://www.linkedin.com/in/adil-khan/",
-    instagram: "https://www.instagram.com/adil.khan/",
-  },
-  media: {
-    hero: null,
-    about: null,
-    achievementFeatured: null,
-    gallery: [],
+    phoneHref: "+919104927782",
   },
 };
