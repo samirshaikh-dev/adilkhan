@@ -16,7 +16,7 @@ export const site = {
     eyebrow: "MBA CANDIDATE · NATIONAL-LEVEL ATHLETE",
     title: ["Business in mind.", "Discipline in action."],
     intro:
-      "I'm Adil Khan. I have completed a BBA and am currently pursuing an MBA, while competing in grappling at national level. Sport has shaped how I prepare, focus, and handle pressure.",
+      "I'm Adil Khan, based in Vapi, Gujarat. I have completed a BBA and am currently pursuing an MBA, while competing in grappling at national level. Sport has shaped how I prepare, focus, and handle pressure.",
     primaryCta: { label: "Explore my journey", href: "#achievements" },
     secondaryCta: { label: "Contact me", href: "#contact" },
     facts: [
@@ -56,7 +56,7 @@ export const site = {
     eyebrow: "Profile",
     title: "Built by preparation.",
     lead:
-      "I am a BBA graduate pursuing an MBA, with a national-level grappling career alongside my studies.",
+      "Based in Vapi, Gujarat, I am a BBA graduate pursuing an MBA, with a national-level grappling career alongside my studies.",
     body:
       "I am drawn to business problems that reward clear thinking and steady execution. Competition has been a practical education in both: you prepare deliberately, adapt under pressure, and learn to judge progress by what you can repeat.",
     quote:
@@ -107,4 +107,22 @@ export const site = {
     phone: "+91 91049 27782",
     phoneHref: "+919104927782",
   },
+  faq: [
+    {
+      question: "Where is Adil Khan based?",
+      answer: "Adil Khan is based in Vapi, Gujarat, India.",
+    },
+    {
+      question: "What is Adil Khan studying?",
+      answer: "He is pursuing an MBA and has completed a BBA.",
+    },
+    {
+      question: "What is Adil Khan's main sporting achievement?",
+      answer: "He won a silver medal at national-level grappling.",
+    },
+    {
+      question: "How can I contact Adil Khan?",
+      answer: "The best way to reach him is by phone at +91 91049 27782.",
+    },
+  ],
 };

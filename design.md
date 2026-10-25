@@ -1,379 +1,419 @@
-# Adil Khan — Personal Portfolio: Design & Build Specification
+# Adil Khan — Portfolio Design & Build Specification
 
-## 1. Project Goal
+Current specification for the implemented single-page portfolio. This document supersedes the earlier dark/bronze direction and should be read alongside `changes.md`.
 
-Build a professional single-page portfolio for **Adil Khan**, positioned as a business-minded MBA student and national-level grappling athlete. The site supports his professional digital presence for management-related opportunities, networking, and showcasing verified achievements.
+## 1. Purpose
+
+Create a professional, credible personal portfolio for **Adil Khan**: a BBA graduate pursuing an MBA and a national-level grappling silver medallist from Vapi, Gujarat. The site supports professional conversations, networking, and future opportunities.
 
 ### Art direction
 
-**Athletic editorial:** business credibility meets mat discipline. The page alternates **dark**, **light**, and **tint** horizontal bands—not a flat all-white template. Personality comes from verified copy, real photos when available, and restrained typography (serif display + sans body). Avoid generic SaaS or AI-landing-page clichés (fake stats, skill bars, stock portraits, neon glow).
+**Light editorial:** Swiss-inspired grid discipline, generous whitespace, clear hierarchy, and restrained athletic storytelling. The interface should feel calm and deliberate rather than like a SaaS template or an AI-generated landing page.
 
 ### Non-negotiables
 
-- **Strictly one page.** No extra pages, routes, or gallery/contact sub-pages. All navigation scrolls to sections on the same page.
-- **Mobile-first and fully responsive.** Design at 360px first, then adapt to tablet and desktop.
-- **Verified content only.** Never invent contact details, institutions, dates, experience, skills, leadership roles, metrics, or achievements.
-- **Authentic photos only.** Real sports and award-ceremony photos of Adil. No AI-generated or stock images presented as him.
-- **No fake image placeholders.** If a photo is not provided, omit the figure entirely or use the approved non-photographic hero panel (see §4.2). Never label boxes “Portrait”, “Profile photo”, or similar.
+- **One page only.** All navigation uses same-page anchors.
+- **Mobile-first.** The layout must remain intentional at 320px and scale cleanly to 1600px.
+- **Verified content only.** Do not invent institutions, dates, competition details, rankings, contact details, experience, or achievements.
+- **No fabricated imagery.** No stock photos, AI portraits, placeholder image boxes, or fake “Profile photo” frames.
+- **Light theme throughout.** No dark theme, black full-page background, or dark section bands.
+- **Restrained lime accent.** Lime marks small states and highlights; it must not dominate the page.
+- **No decorative clutter.** No gradient blobs, glassmorphism, neon glow, heavy shadows, floating objects, or arbitrary abstract graphics.
+- **Content survives without JavaScript.** Navigation and content are rendered as standard HTML; JavaScript enhances the sticky header only.
 
 ---
 
 ## 2. Design Tokens
 
-All styling uses CSS custom properties defined in [src/app/globals.css](src/app/globals.css). Avoid one-off colors outside these tokens except documented decorative gradients on the hero panel.
+Tokens are defined in [src/app/globals.css](src/app/globals.css).
 
-### 2.1 Colour palette
+### 2.1 Colour
 
 | Token | Value | Use |
 |---|---|---|
-| `--hero-bg` | `#0B1220` | Hero, interests band, footer |
-| `--hero-bg-soft` | `#141D2E` | Hero panel depth, mobile nav on dark header |
-| `--hero-text` | `#F7F5F2` | Headings and primary text on dark bands |
-| `--hero-muted` | `#A8B4C4` | Body text on dark bands |
-| `--bg` | `#F7F5F2` | Primary light background |
-| `--text` | `#263B53` | Headings and body on light bands |
-| `--text-muted` | `#4A6078` | Secondary text, meta lines |
-| `--accent` | `#4778A8` | Links and cool highlights on light backgrounds |
-| `--accent-text` | `#3B6794` | Eyebrows and links on tint surfaces |
-| `--accent-warm` | `#C9A227` | Bronze: eyebrows on dark, medal accent, focus ring |
-| `--accent-warm-soft` | `rgba(201, 162, 39, 0.15)` | Badges, subtle highlights |
-| `--surface` | `#EEF1F5` | Education tint band |
-| `--border` | `#DCE3EA` | Cards and dividers on light bands |
-| `--border-dark` | `rgba(247, 245, 242, 0.12)` | Borders on dark bands |
+| `--ivory` | `#F7F8F2` | Page background, hero, education, interests, footer |
+| `--paper` | `#FFFFFF` | Alternating section surfaces and cards |
+| `--ink` | `#0A0A0A` | Primary text, borders, focus ring |
+| `--slate` | `#5F6368` | Secondary text, labels, metadata |
+| `--lime` | `#B8FF00` | Small accents, active states, CTA fill |
+| `--line` | `#DFE2D8` | Default dividers |
+| `--line-strong` | `#C9CDC1` | Stronger dividers, control borders |
 
 ```css
 :root {
   color-scheme: light;
-  --hero-bg: #0b1220;
-  --hero-bg-soft: #141d2e;
-  --hero-text: #f7f5f2;
-  --hero-muted: #a8b4c4;
-  --bg: #f7f5f2;
-  --text: #263b53;
-  --text-muted: #4a6078;
-  --accent: #4778a8;
-  --accent-text: #3b6794;
-  --accent-warm: #c9a227;
-  --radius: 6px;
-  --radius-lg: 12px;
-  --container: 1080px;
-  --reading: 65ch;
-  --header-height: 72px;
+  --ivory: #f7f8f2;
+  --paper: #ffffff;
+  --ink: #0a0a0a;
+  --slate: #5f6368;
+  --lime: #b8ff00;
+  --line: #dfe2d8;
+  --line-strong: #c9cdc1;
 }
 ```
 
-Set `color-scheme: light` so browsers do not force a system dark theme over the designed bands.
+Do not introduce additional colours without a documented accessibility or content reason.
 
-### 2.2 Section bands (page rhythm)
+### 2.2 Section rhythm
 
-Apply band classes in order down the page:
+| Order | Section | ID | Background | Border treatment |
+|---|---|---|---|---|
+| 1 | Hero | `#hero` | Ivory | None |
+| 2 | Achievements | `#achievements` | White | Top and bottom hairline |
+| 3 | Education | `#education` | Ivory | None |
+| 4 | Profile | `#profile` | White | Top and bottom hairline |
+| 5 | Interests | `#interests` | Ivory | None |
+| 6 | Contact | `#contact` | White | Top and bottom hairline |
+| 7 | Footer | — | Ivory | Top hairline |
 
-| Order | Section | Class | Background |
-|---|---|---|---|
-| 1 | Hero | `.band-dark` | `--hero-bg` |
-| 2 | About | `.band-light` | `--bg` |
-| 3 | Education | `.band-tint` | `--surface` |
-| 4 | Achievements | `.band-light` | `--bg` |
-| 5 | Interests | `.band-dark` | `--hero-bg` |
-| 6 | Contact | `.band-light` | `--bg` |
-| 7 | Footer | (footer styles) | `--hero-bg` |
-
-**Contrast rules**
-
-- On **light/tint** bands: body `--text`, eyebrows `--accent-text` (or `--accent` on `--bg`).
-- On **dark** bands: headings `--hero-text`, body `--hero-muted`, eyebrows `--accent-warm`.
-- **Focus-visible:** `2px solid var(--accent-warm)` with offset (see globals).
-- Decorative borders (`--border`) are not sole indicators for interactive controls; buttons use fill or explicit borders.
-- Meta `theme-color`: `#0B1220` (hero/footer tone).
-
-**Allowed gradients**
-
-- Hero **DecorativePanel** only: subtle mesh/tatami-style CSS gradients—not photographic, not a stand-in for Adil’s face.
-- **MedalBadge:** subtle bronze tint gradient on the chip background only.
-
-No drop shadows on cards, no glassmorphism, no neon.
+The alternating ivory/white rhythm provides separation without dark bands or heavy cards.
 
 ### 2.3 Typography
 
-Loaded via `next/font` in [src/app/layout.js](src/app/layout.js) (bundled at build time, `display: swap`):
+Loaded via `next/font/google` in [src/app/layout.js](src/app/layout.js):
 
 | Role | Font | Weights |
 |---|---|---|
-| Display (`h1`, `h2`, wordmark) | **Fraunces** | 600 |
-| Body, UI, nav | **DM Sans** | 400, 500, 600 |
+| Headings, wordmark, key figures | **Manrope** | 500, 600, 700 |
+| Body, UI, navigation, labels | **Inter** | 400, 500, 600 |
 
-CSS variables: `--font-display`, `--font-body`.
+CSS variables: `--font-heading`, `--font-body`.
 
-| Role | Size | Notes |
+| Role | Token / Size | Notes |
 |---|---|---|
-| Body | 16px, line-height 1.6 | Max line length `--reading` (65ch) |
-| H1 | `clamp(2.25rem, 7vw, 3.5rem)` | Fraunces, once per page |
-| H2 | `clamp(1.75rem, 4.5vw, 2.35rem)` | Fraunces |
-| H3 | 1.125–1.2rem | DM Sans, weight 600 |
-| Eyebrow | 13px | Uppercase, increased tracking; warm on dark, `--accent-text` on light/tint |
-| Caption | 14px | `--text-muted` on light bands |
+| Hero title | `clamp(2.7rem, 6.8vw, 6.5rem)` | Manrope 600, line-height `1.04`, tight tracking |
+| Section heading | `clamp(2rem, 4vw, 3.5rem)` | Manrope 600, line-height `1.12` |
+| Subheading | `clamp(1.25rem, 2vw, 1.5rem)` | Manrope 600 |
+| Body | `1rem`–`1.125rem` | Inter, line-height `1.7` |
+| Supporting text | `0.9375rem` | Inter, secondary colour |
+| Eyebrow / metadata | `0.75rem` | Uppercase, tracked, Inter 600 |
 
-Body text never goes below 16px on mobile.
+- Body copy never drops below `16px` on mobile.
+- Eyebrows include a small lime dot, but the label remains readable without it.
+- The hero headline is supplied as two block-level phrases. Phrases may reflow internally on narrow columns, producing a stacked editorial headline.
+- The second headline phrase carries a lime underline rather than a lime text fill.
+- Use `text-wrap: balance` on headings and `text-wrap: pretty` on paragraphs.
 
-### 2.4 Spacing
+### 2.4 Spacing, layout, and shape
 
-- Scale (px): **4, 8, 12, 16, 20, 24, 32, 40, 48, 64, 80, 96**.
-- Section vertical padding: **64px** mobile, **96px** desktop (≥768px).
-- Container: max-width **1080px**; horizontal inset **40px** mobile, **64px** total from 768px up.
-- `scroll-padding-top`: **`--header-height`** (72px).
+| Token | Value |
+|---|---|
+| Content container | `1180px` |
+| Horizontal gutter | `clamp(1.25rem, 4vw, 3rem)` |
+| Section padding | `clamp(4rem, 9vw, 7.5rem)` |
+| Header height | `68px` mobile, `76px` from 768px |
+| Radii | `4px`, `8px`, `14px` |
+| Fast transition | `160ms` |
+| Base transition | `220ms` |
+| Easing | `cubic-bezier(0.16, 1, 0.3, 1)` |
+
+- Spacing uses a 4/8px-based scale (`--space-1` through `--space-10`).
+- Prefer borders and whitespace over shadows. No card drop shadows.
+- Sticky header uses a near-opaque ivory background with a subtle backdrop blur for scroll legibility. It is not a decorative glass surface.
+- `scroll-padding-top` is `header height + 20px` on the root scroll container so anchored headings clear the sticky header. Do not add a matching `scroll-margin-top` to sections; the two offsets would stack and leave an excessive gap.
+- Avoid hiding layout defects with `overflow-x: hidden`; the page must have no real horizontal overflow.
 
 ### 2.5 Breakpoints
 
-- Base: **360px** (must also work at **320px**).
-- **768px:** hero two-column; about optional second column if photo exists; achievement meta two columns; contact split; interest grid 2 columns.
-- **1024px:** interest grid 4 columns; achievement gallery 3 columns when gallery has items.
+| Breakpoint | Behaviour |
+|---|---|
+| Base / 320px | Single column, compact header, mobile menu |
+| 480px (`30rem`) | Stacked fact rows, full-width hero buttons |
+| 768px (`48rem`) | Desktop nav appears; hero, achievements, education, profile, interests, and contact become multi-column |
+| 1024px (`64rem`) | Education timeline uses a two-column row layout |
+| 1280–1600px | Wider gutters and larger fluid hero type; content remains capped at 1180px |
 
 ---
 
-## 3. Components and States
+## 3. Components and Page Structure
 
-Implementation lives under [src/components/](src/components/). Shared UI in [src/components/ui/](src/components/ui/).
+Composition: [src/app/page.js](src/app/page.js).
 
-### 3.1 Buttons (`ButtonLink`)
+Page order: Hero → Achievements → Education → Profile → Interests → Contact.
 
-Variants (min height **44px**):
+All content sections are semantic `<section>` elements with stable IDs and `aria-labelledby`. The page has exactly one `<h1>`.
 
-| Variant | Use |
-|---|---|
-| `primary-warm` | Hero primary CTA on dark band (bronze fill) |
-| `ghost-light` | Hero secondary on dark band (outline) |
-| `primary-navy` | Optional CTAs on light bands |
-| `outline` | Proof links, secondary actions on light bands |
-
-Hover: short color/background transition (≤150ms). Framer Motion may apply ≤1px vertical nudge; disable under reduced motion (see §3.7).
-
-### 3.2 Links
-
-- **Contact:** pill-style `.contact-pill` (no underline); border + hover background.
-- **Body copy links:** use accent colors per band; underline where appropriate in prose.
-- External social links: `rel="noopener noreferrer"`.
-
-### 3.3 Cards and surfaces
-
-- **Timeline cards** (education): white on tint band, `--border`, `--radius-lg`, no hover lift.
-- **Feature card** (achievements): grouped text + meta; **MedalBadge** for result.
-- **Interest tiles:** bordered cells on dark band; hover = border color only.
-
-### 3.4 Images and empty states
-
-Content-driven via [src/data/site.js](src/data/site.js) `media` and [src/lib/media.js](src/lib/media.js) `hasMedia()`.
-
-```js
-media: {
-  hero: null,                    // { src, alt, width, height }
-  about: null,
-  achievementFeatured: null,
-  gallery: [],                   // [{ src, alt, caption?, width, height }]
-}
-```
-
-- If `media.hero` is set: `next/image`, 4:5 crop, `priority` + `fetchPriority="high"` (LCP).
-- If `media.hero` is null: show **DecorativePanel** (CSS only, `aria-hidden`).
-- If `about`, `achievementFeatured`, or `gallery` entries are missing: **omit** those figures; do not show placeholder rectangles with text labels.
-
-When present: rounded corners (`--radius` / `--radius-lg`), explicit width/height, lazy load below the fold.
-
-### 3.5 Icons
-
-- No icon pack. Social links remain text (“LinkedIn”, “Instagram”).
-- **MedalBadge** uses a small CSS dot—not an icon font.
-- Menu control is text **“Menu”** with `aria-expanded` / `aria-controls`.
-
-### 3.6 Shared UI
-
-| Component | Purpose |
-|---|---|
-| `SectionIntro` | Eyebrow + `h2` + optional description |
-| `ButtonLink` | Styled anchor buttons |
-| `DecorativePanel` | Hero non-photo visual |
-| `MedalBadge` | Achievement result chip |
-
-### 3.7 Motion
-
-- **Framer Motion:** section reveal on scroll (`whileInView`), light stagger on grids; hero animates on load.
-- Transitions on color/header state ≤200ms.
-- Smooth scroll enabled on `html`.
-- `@media (prefers-reduced-motion: reduce)`: no smooth scroll, no transitions/animations.
-
----
-
-## 4. Page Structure (single page, in order)
-
-Composition: [src/app/page.js](src/app/page.js). All sections are `<section>` with stable `id` values and `aria-labelledby`. Nav uses same-page anchors from `site.nav`.
-
-### 4.1 Header / Navigation (`#top`)
+### 3.1 Header / Navigation
 
 File: [src/components/layout/Header.js](src/components/layout/Header.js).
 
-- Fixed header, height **`--header-height`**.
-- **Over hero** (`#hero` intersecting): transparent background, light text, bronze active underline.
-- **Past hero:** solid off-white bar, subtle blur, `--border` bottom, dark nav text.
-- Wordmark: **Adil Khan** (Fraunces). Links: About, Education, Achievements, Interests, Contact.
-- **Mobile (<768px):** “Menu” toggles stacked nav; panel matches current header mode (dark or light).
-- Active section: underline + `aria-current="true"` (scroll-spy).
-- Skip link: first focusable element → `#main-content`.
+- Client component with sticky positioning.
+- Wordmark: black `AK` mark with lime dot + **Adil Khan**.
+- Desktop links: **Achievements**, **Education**, **Profile**, **Contact**.
+- Mobile (<768px): **Menu** button toggles a compact dropdown panel with the same links.
+- Active section uses `aria-current="location"`, a dark label, and a lime underline on desktop or lime dot in the mobile menu.
+- Scroll spy updates on scroll and resize; it marks Contact active near the page bottom.
+- Mobile menu closes on link selection, `Escape`, outside pointer interaction, or resizing to desktop. On Escape, focus returns to the menu button.
+- Skip link is the first focusable element and targets `#main-content`.
+- Wordmark targets `#top`.
 
-### 4.2 Hero (`#hero`)
+### 3.2 Hero
 
 File: [src/components/sections/HeroSection.js](src/components/sections/HeroSection.js).
 
-- Dark band; min-height ~viewport (see `.hero-section`).
-- One **`h1`:** Adil Khan.
-- Eyebrow, verified tagline, supporting `heroText` from data.
-- **Two CTAs:** “View achievements” → `#achievements`, “Contact” → `#contact`. Add “Resume” only if a file URL exists in data.
-- Layout: copy left; right column = real portrait **or** DecorativePanel.
-- No invented stats or slogan headlines.
+- Ivory background; no photographic hero image is available, so the section uses a factual **At a glance** panel instead.
+- Eyebrow: `MBA CANDIDATE · NATIONAL-LEVEL ATHLETE`.
+- `h1`: **Business in mind. Discipline in action.**
+- Short first-person introduction connecting business education, grappling, and his base in Vapi, Gujarat.
+- Primary CTA: **Explore my journey** → `#achievements`; lime fill with dark text and arrow.
+- Secondary CTA: **Contact me** → `#contact`; outlined.
+- “At a glance” card lists: current study, education background, sport, and location.
+- Closing note states openness to conversations about business and sport.
+- At 480px and below, actions stack full-width and fact rows stack vertically.
 
-### 4.3 About (`#about`)
-
-File: [src/components/sections/AboutSection.js](src/components/sections/AboutSection.js).
-
-- Light band; `SectionIntro` + 2–3 paragraphs from `site.about`.
-- Second paragraph (grappling): **pull-quote** styling (bronze left border).
-- Second column with photo **only** when `media.about` is set.
-- Voice: first or third person—consistent across the page.
-
-### 4.4 Education (`#education`)
-
-File: [src/components/sections/EducationSection.js](src/components/sections/EducationSection.js).
-
-- Tint band; vertical **timeline** with nodes and connecting line.
-- BBA and MBA entries; show institution, dates, details **only when confirmed**.
-- Period containing “Present” → **Current** badge on that entry.
-- Omit individual lines that are not verified, not whole entries unless the degree itself is unconfirmed.
-
-### 4.5 Achievements (`#achievements`)
+### 3.3 Achievements
 
 File: [src/components/sections/AchievementsSection.js](src/components/sections/AchievementsSection.js).
 
-- Lead item: verified championship title and result (e.g. silver medal).
-- **MedalBadge** for result line; meta list in one or two columns.
-- Optional proof link as outline button when URL is verified.
-- Featured photo above card when `media.achievementFeatured` is set.
-- Gallery grid **only** when `media.gallery` has items with captions when provided.
-- Do not claim extra medals or ranks without source data.
+- White surface.
+- The result is the visual anchor: large stacked **Silver / medal** typography.
+- Context chip: **National-level grappling** with a lime dot.
+- Copy explains the achievement without adding unverified event names, dates, divisions, venues, or links.
+- Supporting line: **Result: Silver medal · Sport: Grappling**.
+- No photo gallery or proof link is shown until authentic assets and a working source exist.
 
-### 4.6 Interests (`#interests`)
+### 3.4 Education
+
+File: [src/components/sections/EducationSection.js](src/components/sections/EducationSection.js).
+
+- Ivory background.
+- Section heading: **A business education, in progress.**
+- Simple timeline/list with two entries:
+  - **MBA** — Master of Business Administration — **In progress**.
+  - **BBA** — Bachelor of Business Administration — **Completed**.
+- The current MBA status receives a lime dot; completed status uses a neutral dot.
+- Institution names and dates are omitted because they are not verified in the repository.
+- At 1024px, each row places degree/status in the left column and qualification details in the right.
+
+### 3.5 Profile and transferable strengths
+
+File: [src/components/sections/ProfileSection.js](src/components/sections/ProfileSection.js).
+
+- White surface.
+- Heading: **Built by preparation.**
+- Short first-person lead and body connecting Vapi, study, sport, preparation, and execution.
+- Pull quote with a lime left border.
+- Three numbered insights:
+  1. Preparation over noise
+  2. Composure in the moment
+  3. Progress through repetition
+- Avoid claiming professional seniority, management experience, or measurable business outcomes that Adil cannot substantiate.
+
+### 3.6 Interests
 
 File: [src/components/sections/InterestsSection.js](src/components/sections/InterestsSection.js).
 
-- Dark band; responsive grid of interest tiles from `site.interests`.
-- No skill bars, percentages, or tag clouds.
+- Ivory background and intentionally quieter than Achievements.
+- Heading: **Life outside competition.**
+- Three-column editorial list from 768px:
+  - Cricket
+  - Strength training
+  - Continuous learning
+- No skill bars, percentages, tag clouds, or stock imagery.
 
-### 4.7 Contact (`#contact`)
+### 3.7 Contact
 
 File: [src/components/sections/ContactSection.js](src/components/sections/ContactSection.js).
 
-- Light band; split layout: intro left, **contact pills** right (email `mailto:`, social URLs).
-- No contact form unless a backend is added later.
-- If email and all socials are absent: **remove section** and drop Contact from `site.nav`.
+- White surface.
+- Heading: **Let's connect.**
+- Invitation to discuss business, sport, and future opportunities.
+- Direct phone CTA: **+91 91049 27782** → `tel:+919104927782`.
+- Contact card includes location and what Adil is open to.
+- A compact **Quick answers** block below the contact grid answers four factual questions: where Adil is based, what he is studying, his main sporting achievement, and how to contact him.
+- Quick answers use a semantic `<dl>` so questions and answers remain readable and machine-extractable.
+- Phone is the only verified contact channel. Do not add email, social links, or a resume until valid destinations are supplied.
+- No contact form.
 
-### 4.8 Footer
+### 3.8 Footer
 
 File: [src/components/layout/Footer.js](src/components/layout/Footer.js).
 
-- Dark band; centered **© {year} Adil Khan** only.
+- Ivory background, quiet typography, top hairline.
+- **© Adil Khan · Based in Vapi, Gujarat**
+- Site credit link to Samir Shaikh, opening externally with `rel="noopener noreferrer"`.
+- The copyright intentionally omits a dynamic year so the page remains statically prerenderable.
 
 ---
 
-## 5. Technical Requirements
+## 4. Interaction and Motion
 
-### 5.1 Stack
+- Use native anchor links and browser scrolling.
+- Smooth scrolling is enabled on `html`, with `scroll-padding-top` clearing the sticky header.
+- Link, button, status, and nav transitions are `160–220ms`.
+- Primary CTA arrow moves slightly on hover; contact arrow moves up-right.
+- Mobile menu has a short `180ms` entrance animation.
+- Header scroll spy is the only ongoing scroll interaction; it uses `requestAnimationFrame` and passive listeners.
+- No animation library is used.
+- No scroll-jacking, parallax, autoplay carousels, counters, typing effects, or content hidden until animation.
+- `prefers-reduced-motion: reduce` disables smooth scrolling and reduces animations/transitions to near-zero duration.
+- Focus-visible uses a `2px` ink outline with `3px` offset on all interactive elements.
+- Touch targets should be at least `44px` where practical, especially navigation, buttons, and the phone CTA.
 
-- **Next.js** (App Router), static prerender of `/`.
-- **React** client components for header, sections (scroll/motion).
-- **Tailwind CSS v4** imported in globals; primary styling via custom properties and component classes in [src/app/globals.css](src/app/globals.css).
-- **Framer Motion** for scroll reveals and subtle interaction feedback.
-- **No** analytics or third-party scripts unless explicitly approved.
+---
 
-### 5.2 Fonts
+## 5. Content Integrity
 
-- **DM Sans** and **Fraunces** via `next/font/google` in [src/app/layout.js](src/app/layout.js) (self-hosted output at build; no runtime request to Google CDN from the browser).
+### 5.1 Verified public content
 
-### 5.3 Images
+- Name: **Adil Khan**
+- Location: **Vapi, Gujarat, India**
+- Education: **BBA completed; MBA in progress**
+- Sport: **Grappling**, national level
+- Achievement: **Silver medal**
+- Interests: **Cricket, strength training, continuous learning**
+- Contact: **+91 91049 27782**
 
-- Use **`next/image`** with paths under `public/` referenced from `site.media`.
-- Prefer modern formats in assets (WebP/AVIF sources); always pass `width` and `height`.
-- Hero: eager + high fetch priority when configured.
-- Below fold: `loading="lazy"`, `decoding="async"`.
-- Target ≤150KB per optimized photo where possible; max source width ~1600px.
-- **Alt text:** describe scene and person; never start with “image of”.
+### 5.2 Removed or intentionally omitted
 
-### 5.4 Accessibility
+The previous implementation contained unverified or placeholder content, including:
 
-- Skip link, landmarks (`header`, `nav`, `main`, `section`, `footer`).
+- Sample college and graduate-school names
+- `example.com` proof URLs
+- Sample email addresses
+- Generic LinkedIn/Instagram links
+- A resume path without a confirmed file
+- Specific competition name, date, division, organizer, and unverified proof links
+- Additional medals or rankings without support
+
+Do not restore these without verified source material from the owner.
+
+### 5.3 Rules
+
+- If information is missing, omit it cleanly; do not show TODOs or placeholders publicly.
+- Do not call an achievement “verified” unless a real, working source exists.
+- Keep the name consistently **Adil Khan**.
+- Preserve first-person voice where currently used.
+- Keep sentences concise and specific. Avoid superlatives, buzzwords, and invented metrics.
+- Include photos only when authentic files and alt text are supplied.
+
+---
+
+## 6. Technical Requirements
+
+### 6.1 Stack
+
+- **Next.js 16.4.3** with App Router and static prerendering.
+- **React 19.3.0**.
+- **Tailwind CSS v4** is imported, but primary styling remains custom CSS in `globals.css`.
+- No animation, icon, date, or state-management libraries are required.
+- Available scripts: `dev`, `build`, `start`. There is no lint, type-check, or test script in the repository.
+
+### 6.2 Fonts
+
+- Manrope and Inter via `next/font/google`, self-hosted at build time with `display: swap`.
+- Limit weights to those listed in §2.3.
+
+### 6.3 Images and media
+
+- The current page is text-first and contains no public photographs.
+- Do not add image components, placeholder boxes, or decorative panels until authentic media is supplied.
+- When photos are added:
+  - Use `next/image` with explicit dimensions or aspect ratio.
+  - Provide useful alt text describing the scene and person.
+  - Eager-load only the hero/LCP image; lazy-load everything below the fold.
+  - Store compressed WebP/AVIF sources under `public/`.
+  - Never use stock imagery or AI-generated portraits presented as Adil.
+
+### 6.4 SEO, AEO, GEO, and AIO
+
+**Search engine optimization (SEO)**
+
+- Canonical site: `https://adilkhan-ebon.vercel.app`.
+- Title: `Adil Khan | MBA Candidate & National-Level Athlete in Vapi`.
+- Short title: `Adil Khan | MBA & Grappling in Vapi`.
+- Description references MBA study, BBA completion, national-level grappling silver medal, Vapi/Gujarat, and the portfolio sections.
+- Locale: `en_IN`; document language: `en-IN`.
+- Keywords target the verified entity and local intent: Adil Khan Vapi, MBA candidate Vapi, BBA graduate Vapi, grappling athlete Vapi, national-level grappling Gujarat.
+- Canonical URL, sitemap, robots, manifest, and geographic meta tags are present.
+- Open Graph type: `profile`; Twitter card: `summary_large_image`.
+- Dynamic OG and Twitter images are generated at 1200×630 using the light palette and show Vapi/Gujarat.
+- Favicons use the light `AK` identity (`icon.svg`, `favicon.svg`, `favicon.ico`).
+- Theme colour: `#F7F8F2`.
+
+**Answer engine optimization (AEO)**
+
+- The Contact section contains a visible **Quick answers** block covering location, study, sporting achievement, and contact method.
+- The same questions and answers are represented as `FAQPage` JSON-LD, matching visible content.
+- Hero facts, Profile copy, and Contact copy all state the Vapi/Gujarat location explicitly.
+- Answers are short, factual, and free of unverified event names or contact channels.
+
+**Generative engine optimization (GEO)**
+
+- `llms.txt` provides a concise entity summary, key facts, answer-ready questions, local context, canonical links, and citation guidance.
+- `llms-full.txt` expands the verified profile, education, achievement, strengths, interests, local context, structured data, and citation rules.
+- Both files instruct generative systems not to infer institutions, dates, competition details, social profiles, or professional experience.
+- `robots.txt` explicitly allows major search and AI crawlers, including Googlebot, Bingbot, GPTBot, OAI-SearchBot, PerplexityBot, ClaudeBot, Google-Extended, Applebot-Extended, and CCBot.
+
+**AI optimization (AIO)**
+
+- JSON-LD graph includes `WebSite`, `Place`, `Person`, `ProfilePage`, `ContactPoint`, and `FAQPage`.
+- `Person` includes the verified telephone, home location, address, areas of knowledge, and the national-level grappling silver medal.
+- `Place` includes the Vapi postal address and geographic coordinates.
+- `ContactPoint` uses the verified phone number and serves Vapi, Gujarat, and India.
+- No invented organization, alumni, social profile, award issuer, or service-area claim is included.
+- The public page and all machine-readable files use the same verified facts and canonical URL.
+
+### 6.5 Accessibility
+
+- Semantic landmarks: `header`, `nav`, `main`, `section`, `footer`.
 - One `h1`; logical heading order.
-- `<html lang="en">`.
-- `:focus-visible` on all interactive elements.
-- Keyboard-operable mobile menu.
-- Usable at 200% zoom without horizontal scroll.
-- `prefers-reduced-motion` honored globally.
+- Real links for navigation and real button for the menu.
+- Visible focus on all interactive elements.
+- Accessible names on icon-bearing controls; decorative marks use `aria-hidden`.
+- Mobile menu state announced through `aria-expanded` / `aria-controls`.
+- Active navigation state is conveyed by underline/dot plus `aria-current`, not colour alone.
+- Skip link, keyboard operation, and 200% zoom support.
+- Reduced-motion support.
+- No horizontal scrolling at target widths.
 
-### 5.5 Performance targets (mobile, throttled)
+### 6.6 Performance
 
-- LCP < 2.5s, CLS < 0.1, INP < 200ms when real hero image is used.
-- Lighthouse ≥ 90 across Performance, Accessibility, Best Practices, SEO (framework baseline may exceed legacy “50KB JS” static target; avoid unnecessary client JS).
-
-### 5.6 Head and metadata
-
-- Title and description: verified facts only ([src/app/layout.js](src/app/layout.js)).
-- Open Graph tags; OG image should be a **real photo** at 1200×630 when available.
-- `theme-color`: `#0B1220`.
-- Optional `Person` JSON-LD when contact fields are verified.
-
-### 5.7 Security and hygiene
-
-- No secrets in client code.
-- External links: `rel="noopener noreferrer"`.
-- Prefer React event handlers over inline HTML handlers.
+- Static page; minimal client JavaScript limited primarily to the header.
+- No animation or icon bundles.
+- Fonts use `display: swap` and a small weight set.
+- Avoid layout shift by reserving image dimensions when media is added.
+- Keep the page free of unused assets, dead components, and unnecessary dependencies.
 
 ---
 
-## 6. Content Inputs Needed (supply before launch)
+## 7. Content Needed Before Further Launch Work
 
 - [ ] BBA institution and years
 - [ ] MBA institution, start year, expected completion, specialization
-- [ ] Achievement details: category/weight class, gi or no-gi, organizer, location, date, results link
-- [ ] Interests/strengths list (cricket plus anything else confirmed)
-- [ ] Professional email, social URLs, resume file
-- [ ] Real photos + photographer credits; wire paths in `site.media`
-- [ ] Voice choice: first or third person
-- [ ] Confirmed hero headline wording
+- [ ] Competition details: category/weight class, gi/no-gi, organizer, location, date, official results link
+- [ ] Verified email, LinkedIn, Instagram, or other professional links
+- [ ] Current resume file and sensible filename
+- [ ] Authentic competition, medal, or portrait photos with photographer credit and alt text
+- [ ] Confirmation of the public phone number
+- [ ] Confirmation of voice and any preferred wording changes
 
-**Rule:** any item not provided is omitted from the live page. No placeholder text, no “TBD”, no invented filler. Sample values in `site.js` must be replaced before public launch.
-
----
-
-## 7. Copy Rules
-
-- Plain, specific, credible. No superlatives (“elite”, “world-class”), no buzzwords, no fake metrics.
-- Sentences under 25 words where possible. Consistent voice throughout.
-- Section titles are descriptive (“Professional profile”, “Academic background”), not marketing slogans.
+Any item not supplied remains omitted from the public page.
 
 ---
 
 ## 8. QA and Acceptance Checklist
 
-- [ ] Renders correctly at 320, 375, 768, 1024, and 1440px.
-- [ ] No horizontal overflow at 320px.
-- [ ] Only one page; every nav link scrolls to a section and lands below the fixed header.
-- [ ] Band order and tokens match §2.1–2.2; no unapproved shadows, glass, or neon.
-- [ ] Header switches correctly between hero and solid modes.
-- [ ] Complete keyboard walkthrough, including mobile menu.
-- [ ] axe / Lighthouse accessibility checks clean.
-- [ ] Optional fields tested present and absent (education lines, proof URL, contact fields, each `media` slot).
-- [ ] With all `media` null/empty: no fake photo boxes; DecorativePanel only in hero.
-- [ ] With photos configured: correct lazy/eager loading and alt text.
-- [ ] Reduced-motion and 200% zoom verified.
-- [ ] No unverified claims on the page.
+- [ ] Renders correctly at 320, 360, 375, 430, 768, 1024, 1280, 1440, and 1600px.
+- [ ] No horizontal overflow at any target width.
+- [ ] Only one page; every nav link resolves to a real section and clears the sticky header.
+- [ ] Header active state and mobile menu work by mouse, touch, and keyboard.
+- [ ] Mobile menu closes on selection, Escape, outside click, and desktop resize.
+- [ ] One `h1`; no skipped or misleading heading levels.
+- [ ] Skip link, focus-visible states, and 200% zoom behave correctly.
+- [ ] Hero CTAs, phone link, and footer credit work.
+- [ ] All public text is accurate and free of placeholders or unverified claims.
+- [ ] Vapi/Gujarat location is consistent across visible copy, metadata, schema, and LLM files.
+- [ ] Visible Quick answers match the FAQPage JSON-LD exactly.
+- [ ] `llms.txt` and `llms-full.txt` contain no inferred institutions, dates, socials, or services.
+- [ ] No dark bands, gradient blobs, glassmorphism, heavy shadows, or lime overload.
+- [ ] Reduced-motion mode disables smooth scrolling and meaningful animation.
+- [ ] No console errors, broken assets, or missing metadata.
+- [ ] Production build succeeds.
+- [ ] Unused components, assets, and dependencies remain removed.
 
 ---
 
-## 9. Final Design Principle
+## 9. Design Principle
 
-The portfolio should read as a **real, editorial professional profile**: disciplined typography, alternating dark and light bands, and verified story (MBA + grappling). Warm bronze accents signal achievement without spectacle. Authentic photos carry the visual weight when provided; until then, the layout stays honest—abstract hero texture, text-first achievements, no stock stand-ins.
+The portfolio should read as a real editorial profile: light, precise, human, and disciplined. Typography and whitespace carry the design; lime appears only as a small signal of action or progress. Adil’s verified story — business education, national-level grappling, and steady preparation — carries the credibility, with no invented detail or decorative substitute for missing content.

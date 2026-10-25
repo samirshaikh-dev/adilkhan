@@ -5,6 +5,8 @@ export default function JsonLd() {
   const personId = `${SITE_URL}/#person`;
   const websiteId = `${SITE_URL}/#website`;
   const pageId = `${SITE_URL}/#webpage`;
+  const placeId = `${SITE_URL}/#vapi`;
+  const faqId = `${SITE_URL}/#faq`;
 
   const postalAddress = {
     "@type": "PostalAddress",
@@ -12,6 +14,24 @@ export default function JsonLd() {
     addressRegion: LOCATION.region,
     postalCode: LOCATION.postalCode,
     addressCountry: LOCATION.countryCode,
+  };
+
+  const areaServed = [
+    { "@type": "City", name: LOCATION.city },
+    { "@type": "AdministrativeArea", name: LOCATION.region },
+    { "@type": "Country", name: LOCATION.country },
+  ];
+
+  const place = {
+    "@type": "Place",
+    "@id": placeId,
+    name: LOCATION.fullLabel,
+    address: postalAddress,
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: LOCATION.latitude,
+      longitude: LOCATION.longitude,
+    },
   };
 
   const person = {
@@ -23,11 +43,7 @@ export default function JsonLd() {
     description: SEO.description,
     jobTitle: "MBA Candidate",
     address: postalAddress,
-    homeLocation: {
-      "@type": "Place",
-      name: LOCATION.fullLabel,
-      address: postalAddress,
-    },
+    homeLocation: { "@id": placeId },
     knowsAbout: [
       "Business Administration",
       "Master of Business Administration",
@@ -41,12 +57,36 @@ export default function JsonLd() {
     award: {
       "@type": "Award",
       name: "Silver medal, national-level grappling",
+      description:
+        "A silver medal won at national-level grappling competition.",
     },
   };
 
   if (site.contact?.phone) {
     person.telephone = site.contact.phone;
+    person.contactPoint = {
+      "@type": "ContactPoint",
+      telephone: site.contact.phone,
+      contactType: "professional inquiries",
+      areaServed,
+    };
   }
+
+  const faq = {
+    "@type": "FAQPage",
+    "@id": faqId,
+    url: `${SITE_URL}/#contact`,
+    isPartOf: { "@id": pageId },
+    inLanguage: "en-IN",
+    mainEntity: (site.faq ?? []).map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
+    })),
+  };
 
   const structuredData = {
     "@context": "https://schema.org",
@@ -55,11 +95,13 @@ export default function JsonLd() {
         "@type": "WebSite",
         "@id": websiteId,
         url: SITE_URL,
-        name: `${site.name} | MBA Candidate & National-Level Athlete`,
+        name: SEO.title,
         description: SEO.description,
         inLanguage: "en-IN",
         publisher: { "@id": personId },
+        about: { "@id": personId },
       },
+      place,
       person,
       {
         "@type": "ProfilePage",
@@ -70,8 +112,10 @@ export default function JsonLd() {
         isPartOf: { "@id": websiteId },
         about: { "@id": personId },
         mainEntity: { "@id": personId },
+        hasPart: { "@id": faqId },
         inLanguage: "en-IN",
       },
+      faq,
     ],
   };
 

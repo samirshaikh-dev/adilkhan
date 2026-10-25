@@ -23,7 +23,7 @@
   --font-heading: var(--font-manrope), "Segoe UI", Arial, sans-serif;
   --font-body: var(--font-inter), "Segoe UI", Arial, sans-serif;
 
-  --text-hero: clamp(2.7rem, 6.8vw, 6.5rem);
+  --text-hero: clamp(2.4rem, 5.4vw, 5.25rem);
   --text-section: clamp(2rem, 4vw, 3.5rem);
   --text-subheading: clamp(1.25rem, 2vw, 1.5rem);
   --text-body: clamp(1rem, 1.05vw, 1.125rem);
@@ -182,7 +182,6 @@ button {
 
 .section {
   padding-block: clamp(4rem, 9vw, 7.5rem);
-  scroll-margin-top: calc(var(--header-height) + 20px);
 }
 
 .section--paper {
@@ -459,7 +458,7 @@ button {
 
 .hero {
   position: relative;
-  padding-block: clamp(3.5rem, 8vw, 6.5rem) clamp(3rem, 6vw, 5rem);
+  padding-block: clamp(2rem, 5vw, 4rem) clamp(2rem, 4vw, 3rem);
 }
 
 .hero__inner {
@@ -475,10 +474,10 @@ button {
 }
 
 .hero__title {
-  max-width: 11ch;
+  max-width: 22ch;
   font-size: var(--text-hero);
   font-weight: 600;
-  letter-spacing: -0.065em;
+  letter-spacing: -0.05em;
   line-height: var(--leading-display);
 }
 
@@ -489,8 +488,9 @@ button {
 .hero__title-line--accent {
   text-decoration: underline;
   text-decoration-color: var(--lime);
-  text-decoration-thickness: 0.07em;
-  text-underline-offset: 0.12em;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.22em;
+  text-decoration-skip-ink: auto;
 }
 
 .hero__intro {
@@ -974,6 +974,42 @@ button {
   line-height: 1.6;
 }
 
+.contact__answers {
+  display: grid;
+  grid-column: 1 / -1;
+  gap: var(--space-2);
+  margin-top: clamp(1rem, 2vw, 2rem);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--line-strong);
+}
+
+.answers {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.answer {
+  display: grid;
+  gap: var(--space-1);
+  align-content: start;
+  padding-block: var(--space-2);
+}
+
+.answer__question {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.4;
+}
+
+.answer__text {
+  max-width: 52ch;
+  color: var(--slate);
+  font-size: var(--text-small);
+  line-height: 1.65;
+}
+
 /* Footer */
 
 .site-footer {
@@ -1076,6 +1112,11 @@ button {
 
   .contact__card {
     margin-top: var(--space-3);
+  }
+
+  .answers {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-3) clamp(2rem, 5vw, 4rem);
   }
 }
 

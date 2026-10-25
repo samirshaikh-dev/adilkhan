@@ -2,7 +2,7 @@ import { site } from "../../data/site";
 import ArrowIcon from "../ui/ArrowIcon";
 
 export default function ContactSection() {
-  const { contact, location } = site;
+  const { contact, faq, location } = site;
 
   return (
     <section
@@ -48,6 +48,18 @@ export default function ContactSection() {
               Conversations about business, sport, and future opportunities.
             </p>
           </div>
+        </div>
+
+        <div className="contact__answers">
+          <p className="hero__aside-label">Quick answers</p>
+          <dl className="answers">
+            {faq.map((item) => (
+              <div className="answer" key={item.question}>
+                <dt className="answer__question">{item.question}</dt>
+                <dd className="answer__text">{item.answer}</dd>
+              </div>
+            ))}
+          </dl>
         </div>
       </div>
     </section>
