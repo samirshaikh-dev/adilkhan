@@ -52,6 +52,7 @@ Adil Khan is an MBA candidate, BBA graduate, and national-level grappling silver
 - Education: BBA completed; MBA in progress
 - Sport: Grappling
 - Phone: ${site.contact.phone}
+- Phone (E.164): ${site.contact.phoneHref}
 
 ## Profile Summary
 ${profile}

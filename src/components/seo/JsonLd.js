@@ -62,11 +62,13 @@ export default function JsonLd() {
     },
   };
 
-  if (site.contact?.phone) {
-    person.telephone = site.contact.phone;
+  const contactPhone = site.contact?.phoneHref ?? site.contact?.phone;
+
+  if (contactPhone) {
+    person.telephone = contactPhone;
     person.contactPoint = {
       "@type": "ContactPoint",
-      telephone: site.contact.phone,
+      telephone: contactPhone,
       contactType: "professional inquiries",
       areaServed,
     };

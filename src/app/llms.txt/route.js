@@ -23,6 +23,7 @@ ${site.name} is an MBA candidate, BBA graduate, and national-level grappling sil
 - Achievement: ${site.achievements.result} at national-level grappling
 - Interests: ${(site.interests?.items ?? []).map((item) => item.title).join(", ")}
 - Phone: ${site.contact.phone}
+- Phone (E.164): ${site.contact.phoneHref}
 
 ## Answer-ready facts
 ${answers}

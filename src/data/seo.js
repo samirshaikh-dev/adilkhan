@@ -20,7 +20,7 @@ export const SEO = {
   title: "Adil Khan | MBA Candidate & National-Level Athlete in Vapi",
   shortTitle: "Adil Khan | MBA & Grappling in Vapi",
   description:
-    "Adil Khan is an MBA candidate, BBA graduate, and national-level grappling silver medallist based in Vapi, Gujarat, India. Explore his education, achievement, profile, interests, and direct contact details.",
+    "Adil Khan is an MBA candidate, BBA graduate, and national-level grappling silver medallist in Vapi, Gujarat, India. View his profile and contact details.",
   ogTitle: "Adil Khan | MBA Candidate & National-Level Athlete in Vapi",
   ogDescription:
     "MBA candidate, BBA graduate, and national-level grappling silver medallist based in Vapi, Gujarat, India.",

@@ -322,7 +322,7 @@ Do not restore these without verified source material from the owner.
 - Canonical site: `https://adilkhan-ebon.vercel.app`.
 - Title: `Adil Khan | MBA Candidate & National-Level Athlete in Vapi`.
 - Short title: `Adil Khan | MBA & Grappling in Vapi`.
-- Description references MBA study, BBA completion, national-level grappling silver medal, Vapi/Gujarat, and the portfolio sections.
+- Meta description references MBA study, BBA completion, national-level grappling silver medal, Vapi/Gujarat, and the profile/contact paths.
 - Locale: `en_IN`; document language: `en-IN`.
 - Keywords target the verified entity and local intent: Adil Khan Vapi, MBA candidate Vapi, BBA graduate Vapi, grappling athlete Vapi, national-level grappling Gujarat.
 - Canonical URL, sitemap, robots, manifest, and geographic meta tags are present.
@@ -340,7 +340,7 @@ Do not restore these without verified source material from the owner.
 
 **Generative engine optimization (GEO)**
 
-- `llms.txt` provides a concise entity summary, key facts, answer-ready questions, local context, canonical links, and citation guidance.
+- `llms.txt` provides a concise entity summary, key facts, answer-ready questions, local context, canonical links, the E.164 phone format, and citation guidance.
 - `llms-full.txt` expands the verified profile, education, achievement, strengths, interests, local context, structured data, and citation rules.
 - Both files instruct generative systems not to infer institutions, dates, competition details, social profiles, or professional experience.
 - `robots.txt` explicitly allows major search and AI crawlers, including Googlebot, Bingbot, GPTBot, OAI-SearchBot, PerplexityBot, ClaudeBot, Google-Extended, Applebot-Extended, and CCBot.
@@ -350,7 +350,7 @@ Do not restore these without verified source material from the owner.
 - JSON-LD graph includes `WebSite`, `Place`, `Person`, `ProfilePage`, `ContactPoint`, and `FAQPage`.
 - `Person` includes the verified telephone, home location, address, areas of knowledge, and the national-level grappling silver medal.
 - `Place` includes the Vapi postal address and geographic coordinates.
-- `ContactPoint` uses the verified phone number and serves Vapi, Gujarat, and India.
+- `Person.telephone` and `ContactPoint.telephone` use the verified E.164 number; `ContactPoint` serves Vapi, Gujarat, and India.
 - No invented organization, alumni, social profile, award issuer, or service-area claim is included.
 - The public page and all machine-readable files use the same verified facts and canonical URL.
 
