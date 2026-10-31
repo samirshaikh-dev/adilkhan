@@ -7,7 +7,8 @@ export default function Footer() {
         <p>
           <span className="site-footer__name">© {site.name}</span>
           <span aria-hidden="true"> · </span>
-          Based in {site.location.city}, {site.location.region}
+          Based in {site.location.city}, {site.location.region}{" "}
+          {site.location.postalCode}
         </p>
         <p className="site-footer__credit">
           Site by{" "}

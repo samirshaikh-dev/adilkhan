@@ -1,12 +1,10 @@
-import { SITE_URL } from "../data/seo";
-
-const LAST_UPDATED = "2026-10-25T00:00:00.000Z";
+import { SITE_LAST_UPDATED, SITE_URL } from "../data/seo";
 
 export default function sitemap() {
   return [
     {
       url: `${SITE_URL}/`,
-      lastModified: LAST_UPDATED,
+      lastModified: SITE_LAST_UPDATED,
       changeFrequency: "weekly",
       priority: 1,
     },

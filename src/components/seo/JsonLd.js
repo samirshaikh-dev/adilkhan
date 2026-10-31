@@ -1,5 +1,11 @@
 import { site } from "../../data/site";
-import { LOCATION, SEO, SITE_URL } from "../../data/seo";
+import {
+  LOCATION,
+  MAP_URL,
+  SEO,
+  SITE_LAST_UPDATED,
+  SITE_URL,
+} from "../../data/seo";
 
 export default function JsonLd() {
   const personId = `${SITE_URL}/#person`;
@@ -7,6 +13,9 @@ export default function JsonLd() {
   const pageId = `${SITE_URL}/#webpage`;
   const placeId = `${SITE_URL}/#vapi`;
   const faqId = `${SITE_URL}/#faq`;
+  const occupationId = `${SITE_URL}/#mba-candidate`;
+  const credentialId = `${SITE_URL}/#bba-credential`;
+  const awardId = `${SITE_URL}/#silver-grappling`;
 
   const postalAddress = {
     "@type": "PostalAddress",
@@ -16,50 +25,91 @@ export default function JsonLd() {
     addressCountry: LOCATION.countryCode,
   };
 
-  const areaServed = [
-    { "@type": "City", name: LOCATION.city },
+  const containedInPlace = [
+    { "@type": "AdministrativeArea", name: `${LOCATION.district} district` },
     { "@type": "AdministrativeArea", name: LOCATION.region },
     { "@type": "Country", name: LOCATION.country },
   ];
 
   const place = {
-    "@type": "Place",
+    "@type": ["Place", "City"],
     "@id": placeId,
     name: LOCATION.fullLabel,
+    alternateName: LOCATION.city,
     address: postalAddress,
     geo: {
       "@type": "GeoCoordinates",
       latitude: LOCATION.latitude,
       longitude: LOCATION.longitude,
     },
+    containedInPlace,
+    hasMap: MAP_URL,
+  };
+
+  const areaServed = [
+    { "@id": placeId },
+    { "@type": "AdministrativeArea", name: LOCATION.region },
+    { "@type": "Country", name: LOCATION.country },
+  ];
+
+  const occupation = {
+    "@type": "Occupation",
+    "@id": occupationId,
+    name: "MBA Candidate",
+    description:
+      "Pursuing a Master of Business Administration while competing in grappling at national level.",
+    occupationLocation: { "@id": placeId },
+    skills: [
+      "Business Administration",
+      "Preparation",
+      "Composure Under Pressure",
+    ],
+  };
+
+  const credential = {
+    "@type": "EducationalOccupationalCredential",
+    "@id": credentialId,
+    name: "Bachelor of Business Administration",
+    credentialCategory: "degree",
+    competencyRequired: ["Business Administration"],
+  };
+
+  const award = {
+    "@type": "Award",
+    "@id": awardId,
+    name: "Silver medal, national-level grappling",
+    description:
+      "A silver medal won at national-level grappling competition.",
+    recipient: { "@id": personId },
   };
 
   const person = {
     "@type": "Person",
     "@id": personId,
     name: site.name,
+    givenName: "Adil",
+    familyName: "Khan",
     url: SITE_URL,
     mainEntityOfPage: { "@id": pageId },
-    description: SEO.description,
+    description: SEO.answer,
     jobTitle: "MBA Candidate",
     address: postalAddress,
     homeLocation: { "@id": placeId },
+    hasOccupation: { "@id": occupationId },
+    hasCredential: { "@id": credentialId },
     knowsAbout: [
       "Business Administration",
       "Master of Business Administration",
       "Bachelor of Business Administration",
       "Grappling",
+      "National-Level Sport",
       "Cricket",
       "Strength Training",
       "Preparation",
       "Composure Under Pressure",
+      "Progress Through Repetition",
     ],
-    award: {
-      "@type": "Award",
-      name: "Silver medal, national-level grappling",
-      description:
-        "A silver medal won at national-level grappling competition.",
-    },
+    award: { "@id": awardId },
   };
 
   const contactPhone = site.contact?.phoneHref ?? site.contact?.phone;
@@ -71,6 +121,7 @@ export default function JsonLd() {
       telephone: contactPhone,
       contactType: "professional inquiries",
       areaServed,
+      url: `${SITE_URL}/#contact`,
     };
   }
 
@@ -80,12 +131,18 @@ export default function JsonLd() {
     url: `${SITE_URL}/#contact`,
     isPartOf: { "@id": pageId },
     inLanguage: "en-IN",
+    dateModified: SITE_LAST_UPDATED,
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: ["#contact .answer__question", "#contact .answer__text"],
+    },
     mainEntity: (site.faq ?? []).map((item) => ({
       "@type": "Question",
       name: item.question,
       acceptedAnswer: {
         "@type": "Answer",
         text: item.answer,
+        url: `${SITE_URL}/#contact`,
       },
     })),
   };
@@ -98,12 +155,20 @@ export default function JsonLd() {
         "@id": websiteId,
         url: SITE_URL,
         name: SEO.title,
+        alternateName: ["Adil Khan Portfolio", "Adil Khan Vapi"],
         description: SEO.description,
         inLanguage: "en-IN",
         publisher: { "@id": personId },
         about: { "@id": personId },
+        copyrightHolder: { "@id": personId },
+        copyrightYear: 2026,
+        isFamilyFriendly: true,
+        keywords: SEO.keywords.join(", "),
       },
       place,
+      occupation,
+      credential,
+      award,
       person,
       {
         "@type": "ProfilePage",
@@ -116,6 +181,29 @@ export default function JsonLd() {
         mainEntity: { "@id": personId },
         hasPart: { "@id": faqId },
         inLanguage: "en-IN",
+        keywords: SEO.keywords.join(", "),
+        datePublished: SITE_LAST_UPDATED,
+        dateModified: SITE_LAST_UPDATED,
+        isAccessibleForFree: true,
+        primaryImageOfPage: {
+          "@type": "ImageObject",
+          url: `${SITE_URL}/opengraph-image`,
+          width: 1200,
+          height: 630,
+        },
+        speakable: {
+          "@type": "SpeakableSpecification",
+          cssSelector: [
+            "#hero-title",
+            "#hero .hero__intro",
+            "#contact .answer__text",
+          ],
+        },
+        audience: {
+          "@type": "Audience",
+          audienceType:
+            "Recruiters, business schools, sports organisations, and collaborators",
+        },
       },
       faq,
     ],

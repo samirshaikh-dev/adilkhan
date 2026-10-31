@@ -50,6 +50,10 @@ export const metadata = {
   },
   alternates: {
     canonical: SITE_URL,
+    types: {
+      "application/rss+xml": "/feed.xml",
+      "text/plain": ["/llms.txt", "/llms-full.txt"],
+    },
   },
   openGraph: {
     type: "profile",
@@ -58,8 +62,12 @@ export const metadata = {
     description: SEO.ogDescription,
     siteName: site.name,
     locale: SEO.locale,
+    countryName: LOCATION.country,
     firstName: "Adil",
     lastName: "Khan",
+    ...(site.contact?.phoneHref
+      ? { phoneNumbers: [site.contact.phoneHref] }
+      : {}),
   },
   twitter: {
     card: "summary_large_image",
@@ -95,7 +103,10 @@ export const metadata = {
     "geo.region": `IN-${LOCATION.regionCode}`,
     "geo.placename": `${LOCATION.city}, ${LOCATION.region}`,
     "geo.position": `${LOCATION.latitude};${LOCATION.longitude}`,
+    "geo.country": LOCATION.countryCode,
     ICBM: `${LOCATION.latitude}, ${LOCATION.longitude}`,
+    "DC.language": "en-IN",
+    "DC.coverage": LOCATION.fullLabel,
   },
 };
 

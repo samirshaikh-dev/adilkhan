@@ -1,0 +1,7 @@
+# Security contact for https://adilkhan-portfolio-phi.vercel.app
+
+Contact: tel:+919104927782
+Expires: 2027-12-31T23:59:59.000Z
+Canonical: https://adilkhan-portfolio-phi.vercel.app/.well-known/security.txt
+Preferred-Languages: en
+Policy: https://adilkhan-portfolio-phi.vercel.app/#contact

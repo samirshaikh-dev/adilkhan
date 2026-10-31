@@ -1004,6 +1004,19 @@ button {
   font-weight: 600;
 }
 
+.contact__map {
+  display: inline-flex;
+  min-height: 24px;
+  align-items: center;
+  border-bottom: 1px solid var(--line-strong);
+  color: var(--ink);
+  transition: border-color var(--transition-fast);
+}
+
+.contact__map:hover {
+  border-color: var(--ink);
+}
+
 .contact__note {
   color: var(--slate);
   font-size: var(--text-small);

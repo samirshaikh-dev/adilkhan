@@ -322,7 +322,7 @@ Do not restore these without verified source material from the owner.
 
 **Search engine optimization (SEO)**
 
-- Canonical site: `https://adilkhan-ebon.vercel.app`.
+- Canonical site: `https://adilkhan-portfolio-phi.vercel.app`.
 - Title: `Adil Khan | MBA Candidate & National-Level Athlete in Vapi`.
 - Short title: `Adil Khan | MBA & Grappling in Vapi`.
 - Meta description references MBA study, BBA completion, national-level grappling silver medal, Vapi/Gujarat, and the profile/contact paths.

@@ -1,4 +1,5 @@
 import { site } from "../../data/site";
+import { MAP_URL } from "../../data/seo";
 import ArrowIcon from "../ui/ArrowIcon";
 
 export default function ContactSection() {
@@ -40,7 +41,17 @@ export default function ContactSection() {
             <p>
               <strong>Based in</strong>
               <br />
-              {location.city}, {location.region}, {location.country}
+              {location.city}, {location.region} {location.postalCode},{" "}
+              {location.country}
+              <br />
+              <a
+                className="contact__map"
+                href={MAP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Vapi, Gujarat 396191 on the map
+              </a>
             </p>
             <p>
               <strong>Open to</strong>

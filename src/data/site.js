@@ -4,6 +4,7 @@ export const site = {
   location: {
     city: "Vapi",
     region: "Gujarat",
+    postalCode: "396191",
     country: "India",
   },
   nav: [
@@ -23,7 +24,7 @@ export const site = {
       { label: "Now", value: "Pursuing an MBA" },
       { label: "Background", value: "BBA graduate" },
       { label: "Sport", value: "National-level grappling" },
-      { label: "Based in", value: "Vapi, Gujarat" },
+      { label: "Based in", value: "Vapi, Gujarat 396191" },
     ],
   },
   achievements: {
@@ -110,11 +111,19 @@ export const site = {
   faq: [
     {
       question: "Where is Adil Khan based?",
-      answer: "Adil Khan is based in Vapi, Gujarat, India.",
+      answer: "Adil Khan is based in Vapi, Gujarat 396191, India.",
+    },
+    {
+      question: "Is Adil Khan an MBA candidate in Vapi?",
+      answer: "Yes. He is pursuing an MBA and is based in Vapi, Gujarat.",
     },
     {
       question: "What is Adil Khan studying?",
       answer: "He is pursuing an MBA and has completed a BBA.",
+    },
+    {
+      question: "What sport does Adil Khan compete in?",
+      answer: "He competes in grappling at national level.",
     },
     {
       question: "What is Adil Khan's main sporting achievement?",
@@ -123,6 +132,11 @@ export const site = {
     {
       question: "How can I contact Adil Khan?",
       answer: "The best way to reach him is by phone at +91 91049 27782.",
+    },
+    {
+      question: "Does Adil Khan have an office in Vapi?",
+      answer:
+        "No. Vapi is his stated home location; this site does not list an office, agency, or service business.",
     },
   ],
 };
